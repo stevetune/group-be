@@ -1,0 +1,27 @@
+$white: rgba(255,255,255,.8);
+$lightblue: #4593ba;
+$brown: #3c342f;
+
+/* booking engine container colors */
+$rgb_red: 255;
+$rgb_green: 0;
+$rgb_blue: 255;
+
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+
+$container-width: 1290px;
+
+$mobile-width: 768px;
+// $tablet-width: 1200px;
+
+@mixin desktop {
+	@media (min-width: #{$mobile-width}){
+		@content;
+	}
+}
+
+@mixin customQuery($min-width) {
+    @media (min-width: $min-width){
+        @content;
+    }
+}

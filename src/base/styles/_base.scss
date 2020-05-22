@@ -1,0 +1,31 @@
+html,body{ 
+	height: 100%;
+	margin:0;
+}
+
+body{
+	display: flex;
+	flex-flow: column;
+	background-color: $lightblue !important;
+	background: url(https://reservations.verticalbooking.com/img_templ/img_stili_16831/bg.png) center/cover no-repeat !important; 
+}
+
+header,footer{
+	box-sizing: border-box;
+	font-family:"Open Sans", sans-serif;
+	
+	a{
+		text-decoration: none;
+		color: inherit;
+	}
+
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+footer{
+	margin-top: auto;
+}

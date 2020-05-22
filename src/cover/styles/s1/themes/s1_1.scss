@@ -1,0 +1,25 @@
+/* VARIABLES */
+$red: 69;
+$green: 147;
+$blue: 186;
+
+/* IMPORTS */
+@import "../../../../base/styles/config.scss";
+@import "../../../../base/styles/themes/advanced.scss";
+@import "../../../../base/styles/base.scss";
+@import "../../../../base/styles/layout.scss";
+@import "../../../../base/styles/modules/*.scss";
+@import "../cover-config";
+@import "../cover-layout";
+@import "../modules/*.scss";
+
+/* STYLES */
+
+/* config */
+
+/* layout */
+#header, #footer{
+	font-family: "Chelsea Market";	
+}
+
+/* modules */

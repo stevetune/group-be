@@ -1,0 +1,50 @@
+.main-menu{
+	display: none;
+	position:absolute;
+	left: 0;
+	top: 104px;
+	background-color: $brown;
+	width: 100%;
+
+	&--anchor{
+		font-size: 16px;
+		padding: 10px 20px;
+		display: inline-block;
+		color: #fff;
+	}
+
+
+
+	&.is-visible{
+		display: block;
+	}
+
+	@include desktop{
+		display: block;
+		background-color:unset;
+		position:unset;
+
+		&--menu{
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		&--submenu{
+			display: none;
+			position: absolute;
+			background-color: $brown;
+		}
+
+		&--anchor{
+			color: $brown;
+		}
+
+		&--submenu &--anchor{
+			color: #fff;
+		}
+
+		&--item:hover &--submenu{
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,58 @@
+extends ../../../base/markup/header.pug		
+block headerBlock
+
+	.l-container.l-flex.l-space-between
+
+		span.header-logo
+			a.header-logo--link(href=`${website_url}`)
+				img.header-logo--image(src=`${logo_url}`)
+
+		.burger
+			.burger--slice
+			.burger--slice.burger--middle-slice
+			.burger--slice
+
+		nav.main-menu
+			ul.main-menu--menu
+				li.main-menu--close-btn
+					.x-button
+				if locals.menu
+					for item in locals.menu
+						li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
+							a.main-menu--anchor(href=`${item.href}`)
+								| #{item.title}
+							if item.submenu
+								ul.main-menu--submenu
+									for subitem in item.submenu
+										li.main-menu--item.main-menu--item-sub
+											a.main-menu--anchor(href=`${subitem.href}`)
+												| #{subitem.title}
+
+	script.
+		document.querySelector(".burger").onclick = () => {
+			document.querySelector(".main-menu").classList.add("is-visible")
+			document.body.classList.add("is-not-scrollable")	
+		}
+
+		document.querySelector(".x-button").onclick = () => {
+			document.querySelector(".main-menu").classList.remove("is-visible")
+			document.body.classList.remove("is-not-scrollable")
+		}
+
+		document.querySelector(".main-menu--item.has-submenu").onclick = (e) => {
+			e.preventDefault()
+			document.querySelector(".main-menu").classList.add("is-show-right")
+		}
+
+		document.querySelector(".main-menu--back-btn").onclick = (e) => {
+			e.preventDefault()
+			e.stopPropagation()
+			document.querySelector(".main-menu").classList.remove("is-show-right")
+		}
+
+		let raquo = document.querySelector(".is-raquo")
+		raquo.innerHTML = "&#187"
+
+		let laquo = document.querySelector(".is-laquo")
+		laquo.innerHTML = "&#171"
+
