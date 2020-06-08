@@ -1,27 +1,27 @@
 module.exports = {
 
 
-	website_url: "https://hamiltonplaza.ca/",
+	website_url: "#",
 	
-	logo_url: "https://hamiltonplaza.ca/wp-content/uploads/2017/05/HP-LOGO-BLUE-HUES-HORIZONTAL.jpg",
+	logo_url: "https://www.placecage.com/250/100",
 
 	menu: [
 		{
-			href: "https://hamiltonplaza.ca/",
+			href: "#",
 			title: "Home"
 		},
 		{
-			href: "https://hamiltonplaza.ca/meetings-events/",
+			href: "#",
 			title: "Meetings & Events",
 			
 		},
 		{
 			title: "Hotel Info",
-			href: "https://hamiltonplaza.ca/features/"
+			href: "#"
 		},
 		{
 			title: "Contact Us",
-			href: "https://hamiltonplaza.ca/contact/"
+			href: "#"
 		},
 		{
 			title: "Book Now",

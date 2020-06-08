@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 
-const basePath = `${__dirname}/src/properties/hamilton-plaza/`
+const basePath = `${__dirname}/src/properties/`
 app.use(express.static(`${basePath}/`))
 
 app.get('/', (req,res) => {

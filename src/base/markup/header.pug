@@ -1,4 +1,4 @@
-include mixins
+include includes/mixins
 
 header#header
 	#header-upper
@@ -6,4 +6,4 @@ header#header
 			.l-container.l-flex
 				+headerLogo()
 				+burger()
-				+headerMenu('slideOut')
+				+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn)

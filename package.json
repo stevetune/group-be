@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "http-server && gulp watch",
     "gulp-watch": "gulp watch",
     "nodemon": "nodemon express",
     "dev": "concurrently --kill-others \"npm run nodemon\" \"npm run gulp-watch\""
@@ -14,12 +13,10 @@
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "concurrently": "^5.2.0",
-    "event-stream": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-livereload": "^4.0.2",
-    "gulp-notify": "^3.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
@@ -29,7 +26,6 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "gulp-if": "^3.0.0"
+    "express": "^4.17.1"
   }
 }

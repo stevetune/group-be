@@ -1,20 +1,20 @@
+@import '../config';
+
 .main-menu{
 	background-color: #3c342f;
-	height: 100vh;
 	width: 100%;
     box-sizing: border-box;
-    position:relative;
-    top: 0;
+    top: 50px;
     left: 0;
     overflow: hidden;
-    margin-left: -100vw;
     position:absolute;
     z-index: 2;    
-    transition: margin-left .2s cubic-bezier(.55,0,.1,1);
+    transition: height .2s cubic-bezier(.55,0,.1,1);
     display: block !important; 
+    height: 0;
 
     &.is-visible{
-    	margin-left: 0;
+    	height: 300px;	
     }
 
     &--menu{
@@ -22,22 +22,12 @@
     }
 
     &--menu{
-		transition: margin-left 350ms cubic-bezier(.55,0,.1,1)
+		// transition: margin-left 350ms cubic-bezier(.55,0,.1,1)
     }
 
     &--menu{
     	margin-top:14px;
     }
-
-    &.is-show-right .main-menu--menu{
-    	margin-left: -100%;
-    }
-
-	&--submenu{
-		position:absolute;
-		margin-left: 100%;	
-		top: 36px;
-	}
 
 	&--anchor{
 		color: $white;
