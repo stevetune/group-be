@@ -1,0 +1,310 @@
+/* ESSENTIAL IMPORTS */
+@import '../../../base/styles/config.scss';
+@import '../../../base/styles/base.scss';
+@import '../../../base/styles/layout.scss';
+@import '../../../base/styles/modules/*.scss';
+
+@import 'lib/cover-config';
+@import 'lib/cover-layout';
+@import 'lib/modules/*.scss';
+
+/* VARIABLES */
+$rgb_red: 37;
+$rgb_green: 62;
+$rgb_blue: 150;
+
+/* INCLUDES */
+@import '../../../base/styles/themes/advanced.scss';
+@import '../../../base/styles/themes/slideout-mobile-menu.scss';
+
+
+/* STYLES */
+
+/* config */
+$lavender: #7da9da;
+$darkBlue: #253e96;
+$lightBlue: #7da9da;
+$darkGray: #262729;
+$charcoal: #3b3b3b;
+$lightGray: #949494;
+
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@700&display=swap');
+
+
+/* base */
+body{
+	background: none;
+}
+
+body::before{
+    background: url(https://reservations.verticalbooking.com/img_templ/img_stili_17223/bg.jpg) center/cover no-repeat !important;
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    z-index: -1;
+}
+
+/* layout */
+#header{
+	font-family: "Chelsea Market";	
+	padding-bottom: 20px;
+
+	@include desktop{
+		height: auto;
+		background-color: #fff;
+		padding-top: 38px;
+	}
+}
+
+#footer{
+	font-family: "Palanquin";	
+	padding-bottom: 0;
+	padding-top: 0px;
+	display: block;
+	background-color: $charcoal;
+}
+
+#header-inner{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: rgba(255,255,255,0.8);
+	flex-direction: row;
+	align-items: center;
+
+	@include desktop{
+		flex-direction: row !important;
+	}
+}
+
+#footer-upper{
+	width: 100%;
+	padding: 20px 0 30px;
+
+	@include desktop{
+		padding: 70px 0 57px;
+	}
+}
+
+#footer-lower{
+	background-color: #fff;
+	color: red;
+	width: 100%;
+	padding: 34px 0 33px;
+	font-size: 14px;
+	color: #77797c;
+	text-align: center;
+}
+
+.l-container{
+	width: 100%;
+	max-width: 1140px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	@include desktop{
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.l-flex{
+	align-items: center;
+}
+
+#header-upper > .l-flex{
+	flex-wrap: wrap;
+
+	@media screen and (min-width: 480px){
+		flex-wrap: nowrap;
+	}
+}
+
+/* modules */
+.header-logo{
+	max-width: 100%;
+
+	&--image{
+		max-width: 100%;
+	}
+
+	@include desktop{
+		margin: 2px 0 0 5px;
+	}
+}
+
+.main-menu{
+	margin-left: 100vw;
+	background-color: #fff;
+
+	&--close-button{
+		position: absolute;
+		right: 0;
+	}
+
+	&--menu{
+		margin: 0;
+		padding:0;
+		justify-content: flex-start;
+	}
+
+	&--anchor{
+		color: #77797c;
+		border-bottom: 1px solid #eaeaea;
+		font: 500 16px/1.2em Palanquin;
+		display: inline-block;
+		letter-spacing: -.1px;
+		width: 100%;
+		padding: 9px 0 10px 20px;
+    }
+
+	&--anchor:hover{
+		color: #77797c;
+	}
+
+	&.is-visible{
+    	margin-left: 0;
+    	width: 100%;
+    }
+
+    @include desktop{
+    	margin-left: 0;
+    	width: auto;
+
+    	&--menu{
+    		margin: -1px 0 0 24px
+    	}
+
+    	&--anchor{
+			font: 700 14px/1.2em Martel;
+			letter-spacing: normal;
+			border-bottom: none;
+			padding: 0;
+			width: auto;
+			color: $darkGray;
+		}
+
+		&--anchor:hover{
+			color: $darkGray;
+		}
+
+		&--anchor::after{
+			content: '';
+			display: block;
+			background-color: $darkGray;
+			margin-top: 4px;
+			height: 2px;
+			transform: scale(0,1);
+			transform-origin: left;
+			opacity: 0;
+			transition: transform .3s ease-in,
+						opacity .4s ease-out;
+		}
+
+		&--anchor:hover::after,
+		&--item:last-of-type &--anchor::after{
+			transform: scale(1,1);
+			opacity: 1;
+		}
+
+		&--item{
+			margin-left: 0;
+			margin-right: 27px !important;
+			padding: 27px 0;
+		}
+    }
+}
+
+.x-button{
+	background-color: $lavender;
+	padding: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    position: absolute;
+    right: 10px;
+
+
+	&::before,
+	&::after{
+		border-width: 5px;
+		border-color: #fff;
+		width: 60%;
+	}
+
+	@include desktop{
+		display: none;
+	}
+}
+
+.footer-location{
+	&--title{
+		font-weight: 700; 
+		font-size: 14px;
+		text-transform: uppercase;
+		margin-bottom: 30px;
+		letter-spacing: 1px;
+	}
+
+	&--line{
+		color: $lightGray;
+		font-size: 16px;
+		line-height: 23px;
+	}
+
+	&--line:nth-of-type(3){
+		margin-top: 23px;
+	}
+}
+
+.footer-button{
+	margin-top: 14px;
+
+	&--top{		
+		background-color: $darkBlue;
+		color: #fff;
+	}
+
+	&--bottom{
+		background-color: $lightBlue;
+		color: #fff;
+	}
+}
+
+.burger{
+    padding: 15px 14px;
+    border: solid 1px;
+    display: block;
+    margin-left: 19px;
+    margin-top: -2px;
+
+    &--slice{
+		height: 4px;
+    	width: 20px;
+    	border-radius: 2px;
+    }
+
+    &--middle-slice{
+    	margin: 3px 0;
+    }
+
+    &:hover{
+    	border-color: $lavender
+    }
+
+    &:hover &--slice{
+    	background-color: $lavender
+    }
+
+    &, &--slice{
+    	transition: all .2s ease-in-out
+    }
+
+    @include desktop{
+    	display: none;
+    }
+}
+

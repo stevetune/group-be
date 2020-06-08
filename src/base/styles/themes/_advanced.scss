@@ -1,19 +1,10 @@
 #header{display: block}
 #footer{position: static}
 #wrapper .container{padding-bottom: 0 !important; margin-bottom: 50px !important;}
-html, body, #wrapper{height: 100vh; min-height: 100vh}
+#wrapper{min-height: 100vh}
 #wrapper{display:flex;flex-direction: column;}
 #template_footer{margin-top: auto;}
 .destra {height: 0;}
-body::before{
-    //background: url(https://reservations.verticalbooking.com/img_templ/img_stili_17123/bg.jpg) center/cover no-repeat !important;
-    background-color: #ffe;
-    content: "";
-    width: 100%;
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-}
 
 @function get-rgba($rgb_red, $rgb_green, $rgb_blue, $alpha){
     @return rgba($rgb_red, $rgb_green, $rgb_blue, $alpha)

@@ -1,4 +1,13 @@
 include mixins
 
 footer#footer
-	block footerBlock
+	#footer-upper
+		block footerUpper
+			.l-container
+				include includes/footer_locations
+			
+
+	#footer-lower
+		block footerLower
+			.l-container
+				include includes/footer_copyright

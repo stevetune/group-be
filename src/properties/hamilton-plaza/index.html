@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced/Smart BE</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="output/main.css">
+  </head>
+  <body> 
+    <header id="header">
+      <div id="header-upper">
+        <div class="l-container l-flex"><span class="header-logo"><a class="header-logo--link" href="https://hamiltonplaza.ca/"><img class="header-logo--image" src="https://hamiltonplaza.ca/wp-content/uploads/2017/05/HP-LOGO-BLUE-HUES-HORIZONTAL.jpg"></a></span>
+              <div class="burger">
+                <div class="burger--slice"></div>
+                <div class="burger--slice burger--middle-slice"></div>
+                <div class="burger--slice"></div>
+              </div>
+              <nav class="main-menu">
+                <ul class="main-menu--menu">
+                  <li class="main-menu--close-btn">
+                    <div class="x-button"></div>
+                  </li>
+                  <li class="main-menu--item main-menu--item-top"><a class="main-menu--anchor" href="https://hamiltonplaza.ca/">Home</a>
+                  </li>
+                  <li class="main-menu--item main-menu--item-top"><a class="main-menu--anchor" href="https://hamiltonplaza.ca/meetings-events/">Meetings &amp; Events</a>
+                  </li>
+                  <li class="main-menu--item main-menu--item-top"><a class="main-menu--anchor" href="https://hamiltonplaza.ca/features/">Hotel Info</a>
+                  </li>
+                  <li class="main-menu--item main-menu--item-top"><a class="main-menu--anchor" href="https://hamiltonplaza.ca/contact/">Contact Us</a>
+                  </li>
+                  <li class="main-menu--item main-menu--item-top"><a class="main-menu--anchor" href="#">Book Now</a>
+                  </li>
+                </ul>
+              </nav>
+              <script>
+                document.querySelector(".burger").onclick = () => {
+                	document.querySelector(".main-menu").classList.add("is-visible")
+                	document.body.classList.add("is-not-scrollable")	
+                }
+                
+                document.querySelector(".x-button").onclick = () => {
+                	document.querySelector(".main-menu").classList.remove("is-visible")
+                	document.body.classList.remove("is-not-scrollable")
+                }
+                
+                document.querySelector(".main-menu--item.has-submenu").onclick = (e) => {
+                	e.preventDefault()
+                	document.querySelector(".main-menu").classList.add("is-show-right")
+                }
+                
+                document.querySelector(".main-menu--back-btn").onclick = (e) => {
+                	e.preventDefault()
+                	e.stopPropagation()
+                	document.querySelector(".main-menu").classList.remove("is-show-right")
+                }
+              </script>
+        </div>
+      </div>
+    </header>
+    <footer id="footer">
+      <div id="footer-upper">
+        <div class="l-container">
+          <div class="footer-location">
+            <div class="footer-location--locations">
+              <div class="footer-location--location">
+                <div class="footer-location--title">HAMILTON PLAZA HOTEL &amp; CONFERENCE CENTER</div>
+                <div class="footer-location--address-container">
+                  <div class="footer-location--line">150 King Street East</div>
+                  <div class="footer-location--line">Hamilton Ontario - L8N 1B2, Canada</div>
+                  <div class="footer-location--line">Hotel Front Desk: 1-905-528-3451</div>
+                  <div class="footer-location--line">Fax: 1-905-522-2281</div>
+                  <div class="footer-location--line">Email: info@hamiltonplaza.ca</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="l-container"><a class="footer-button" href="https://hamiltonplaza.ca/contact">
+            <div class="footer-button--top">Contact Us</div>
+            <div class="footer-button--bottom">Contact Us</div></a></div>
+      </div>
+      <div id="footer-lower">
+        <div class="l-container">
+          <div class="footer-copyright">
+            <div class="footer-copyright--line">&copy;2017 Hamilton Plaza Hotel & Conference Center</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="//10.0.0.5:35729/livereload.js?snipver=1"> </script>
+    <!--script(src="//localhost:35729/livereload.js?snipver=1") -->
+  </body>
+</html>

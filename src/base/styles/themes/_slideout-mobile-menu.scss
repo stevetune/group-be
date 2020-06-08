@@ -11,6 +11,7 @@
     position:absolute;
     z-index: 2;    
     transition: margin-left .2s cubic-bezier(.55,0,.1,1);
+    display: block !important; 
 
     &.is-visible{
     	margin-left: 0;

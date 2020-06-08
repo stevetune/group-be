@@ -1,42 +1,48 @@
 module.exports = {
 
-	property_name: "Test Property 1",
 
-	website_url: "http://www.google.com/",
+	website_url: "https://hamiltonplaza.ca/",
 	
-	logo_url: "https://www.placecage.com/c/300/200",
+	logo_url: "https://hamiltonplaza.ca/wp-content/uploads/2017/05/HP-LOGO-BLUE-HUES-HORIZONTAL.jpg",
 
 	menu: [
 		{
-			href: "#",
-			title: "Item 1",
-			submenu: [
-				{
-					title: "Sub Item 1",
-					href: "#"
-
-				},
-				{
-					title: "Sub Item 2",
-					href: "#"
-				}
-			]
+			href: "https://hamiltonplaza.ca/",
+			title: "Home"
 		},
 		{
-			href: "#",
-			title: "Item 2",
+			href: "https://hamiltonplaza.ca/meetings-events/",
+			title: "Meetings & Events",
 			
 		},
 		{
-			title: "Item 3",
-			href: "#"
+			title: "Hotel Info",
+			href: "https://hamiltonplaza.ca/features/"
 		},
 		{
-			title: "Item 4",
+			title: "Contact Us",
+			href: "https://hamiltonplaza.ca/contact/"
+		},
+		{
+			title: "Book Now",
 			href: "#"
 		}
-	]
+	],
 
+	footer_locations: [
+		{
+			title: "HAMILTON PLAZA HOTEL & CONFERENCE CENTER",
+			address_line_1: "150 King Street East",
+			address_line_2: "Hamilton Ontario - L8N 1B2, Canada",
+			phone_text: "Hotel Front Desk: 1-905-528-3451",
+			fax_text: "Fax: 1-905-522-2281",
+			email_text: "Email: info@hamiltonplaza.ca"
+		}
+	],
+
+	copyright_lines: [
+		"&copy;2017 Hamilton Plaza Hotel & Conference Center"
+	]
 }
 
 

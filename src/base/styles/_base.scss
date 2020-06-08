@@ -1,13 +1,14 @@
-html,body{ 
+html{
 	height: 100%;
-	margin:0;
 }
-
-body{
+	
+body{ 
+	min-height: 100%;
+	margin:0;
 	display: flex;
 	flex-flow: column;
-	background-color: $lightblue !important;
-	background: url(https://reservations.verticalbooking.com/img_templ/img_stili_16831/bg.png) center/cover no-repeat !important; 
+	//background-color: $lightblue !important;
+	//background: url(https://reservations.verticalbooking.com/img_templ/img_stili_16831/bg.png) center/cover no-repeat !important; 
 }
 
 header,footer{
