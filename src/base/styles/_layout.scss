@@ -2,18 +2,16 @@
 
 #header{
 	background-color: #fff;
-	position: relative;
-	align-items: center;
-	padding: 0;
+}
 
-	@include desktop{
-		background-color: $lightblue;
-	}
+#header-upper{
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
 }
 
 #footer{
-	color: #fff;
-	background-color: $brown;
+	background-color: #fff;
 	display: flex;
     padding: 67px 0 70px;
     flex-direction: column;

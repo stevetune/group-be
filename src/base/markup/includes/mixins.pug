@@ -14,7 +14,7 @@ mixin burger()
 		.burger--slice
 
 mixin headerMenu(mobileMenuType, hasCloseBtn)
-	nav.main-menu
+	nav.main-menu.is-collapsible
 		ul.main-menu--menu
 			if hasCloseBtn
 				li.main-menu--close-btn
@@ -33,11 +33,6 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 
 
 	script.
-		document.querySelector(".burger").onclick = () => {
-			document.querySelector(".main-menu").classList.toggle("is-visible")
-			document.body.classList.add("is-not-scrollable")	
-		}
-
 		document.querySelector(".x-button").onclick = () => {
 			document.querySelector(".main-menu").classList.remove("is-visible")
 			document.body.classList.remove("is-not-scrollable")
@@ -45,6 +40,11 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 
 	if mobileMenuType == 1
 		script.
+			document.querySelector(".burger").onclick = () => {
+				document.querySelector(".main-menu").classList.toggle("is-visible")
+				document.body.classList.add("is-not-scrollable")	
+			}
+
 			document.querySelector(".main-menu--item.has-submenu").onclick = (e) => {
 				e.preventDefault()
 				document.querySelector(".main-menu").classList.add("is-show-right")
@@ -55,5 +55,60 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 				e.stopPropagation()
 				document.querySelector(".main-menu").classList.remove("is-show-right")
 			}
+
+	if mobileMenuType == 3
+		script.
+			const collapseMenu = (element) => {
+			  	let menuHeight = element.scrollHeight;
+			  	let elementTransition = element.style.transition;
+			  	element.style.transition = '';
+			
+			  	requestAnimationFrame(() => {
+			    	element.style.height = menuHeight + 'px';
+			    	element.style.transition = elementTransition;
+			
+			    	requestAnimationFrame(() => {
+			      		element.style.height = 0 + 'px';
+			    	});
+			  	});
+			  
+				element.setAttribute('data-collapsed', 'true');
+			}
+
+			const expandMenu = (element) => {
+			  	let menuHeight = element.scrollHeight;
+			  	element.style.height = menuHeight + 'px';
+
+			  	element.addEventListener('transitionend', (e) => {
+			    	element.removeEventListener('transitionend', arguments.callee);
+			    
+			    	element.style.height = null;
+			  	});
+			  
+			  	element.setAttribute('data-collapsed', 'false');
+			}
+			
+			document.querySelector('.burger').addEventListener('click', (e) => {
+			  	let isCollapsed = menu.getAttribute('data-collapsed') === 'true';
+			    
+			  	if(isCollapsed) {
+			    	expandMenu(menu)
+			    	menu.setAttribute('data-collapsed', 'false')
+			  	} else {
+			    	collapseMenu(menu)
+			  	}
+			});
+
+			let menu = document.querySelector('.main-menu.is-collapsible');
+			menu.setAttribute('data-collapsed', 'true');
+			menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
+			menu.style.display = 'block';
+
+			window.addEventListener('resize', () => {
+				menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
+			})
+
+
+
 
 

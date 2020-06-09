@@ -1,142 +1,19 @@
 @import '../config';
 
 .main-menu{
-	background-color: #3c342f;
-	width: 100%;
-    box-sizing: border-box;
-    top: 50px;
-    left: 0;
-    overflow: hidden;
-    position:absolute;
-    z-index: 2;    
-    transition: height .2s cubic-bezier(.55,0,.1,1);
-    display: block !important; 
     height: 0;
+	overflow:hidden;
+    transition:height 0.3s ease-out;
+    height:auto;
+    display: none;
 
-    &.is-visible{
-    	height: 300px;	
+    &--submenu{
+    	margin-left: 30px;
     }
 
-    &--menu{
-    	padding: 22px 36px 36px;
-    }
-
-    &--menu{
-		// transition: margin-left 350ms cubic-bezier(.55,0,.1,1)
-    }
-
-    &--menu{
-    	margin-top:14px;
-    }
-
-	&--anchor{
-		color: $white;
-		padding-bottom: 15px;
-    	display: inline-block;
-    	white-space: nowrap;
-    	font: inherit;
-    	letter-spacing: .3px;
-    	-webkit-font-smoothing: antialiased;
-		text-rendering: optimizelegibility;
-		font: 400 24px/1em "Proxima Nova", Montserrat, sans-serif;
-	}
-
-	&--anchor:hover{
-		color: $white;
-	}
-
-	&--ca
-
-	&--close-btn{
-		position: absolute;
-	    top: 0;
-	    right: 0;
-	}
-	
-	&--back-btn{
-		margin-bottom: 24px;
-	}
-
-	@include desktop{
-		position: static;
-		margin: 0;
-		height: auto;
-		background-color: transparent;
-		width: auto;
-		padding: 0;
-
-		&--menu{
-			display: flex;
-			padding: 29px 6px 10px 0;
-			flex-wrap: wrap;
-    		justify-content: flex-end;
-		}
-
-		&--item-top{
-			margin-left: 8.9px;
-			margin-right: 8.9px !important;
-		}
-
-		&--item-sub &--anchor{
-			transition: color .2s ease-in
-		}
-
-		&--item-top{
-			padding-bottom: 4px;
-		}
-
-		&--anchor{
-			padding-bottom: 0;
-		}
-
-		&--anchor::after{
-			display: none;
-		}
-
+    @include desktop{
 		&--submenu{
-			margin: 0;
-			background-color: #000;
-			top: unset;
-			padding: 12px;
-			margin-left: -11px;
-    		margin-top: 15px;
-    		visibility: hidden;
-    		opacity: 0;
-    		transition: opacity .2s ease-in, margin-top .8s linear, visibility .6s linear; 
-		}
-
-		&--submenu &--anchor{
-			color: #fff;
-			padding: 0 5.348px;
-		}
-
-		&--item:hover &--submenu{
-			margin-top: 5px;
-			opacity: 1;
-			visibility: visible;
-			opacity: 1;
-			transition: opacity .2s ease-out, margin-top .2s ease-out; 
-		}
-
-		&--anchor{
-			text-transform: uppercase;
-			font: 600 14px/1em "Proxima Nova", Montserrat, sans-serif;
-			letter-spacing: .1em;
-		}
-
-		&--item.has-submenu > &--anchor::after{
-			content:"";
-		}
-
-		&--back-btn{
-			display: none;
-		}
-
-		
-
-		&--item:last-of-type{
-			margin-right: 0;
-		}
-	}
-
+    		margin-left: 0px;
+    	}    	
+    }
 }

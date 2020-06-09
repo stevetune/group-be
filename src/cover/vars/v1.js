@@ -13,7 +13,23 @@ module.exports = {
 		{
 			href: "#",
 			title: "Meetings & Events",
-			
+			submenu: [
+				{
+					title: 'Event Menu Item 1',
+					href: '#'
+
+				},
+				{
+					title: 'Event Menu Item 2',
+					href: '#'
+
+				},
+				{
+					title: 'Event Menu Item 3',
+					href: '#'
+
+				}
+			]
 		},
 		{
 			title: "Hotel Info",

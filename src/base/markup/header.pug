@@ -1,9 +1,8 @@
 include includes/mixins
 
 header#header
-	#header-upper
-		block headerBlock
-			.l-container.l-flex
-				+headerLogo()
-				+burger()
-				+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn)
+	block headerBlock
+		.l-container.l-flex#header-upper
+			+headerLogo()
+			+burger()
+			+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn)
