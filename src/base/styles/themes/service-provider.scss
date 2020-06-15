@@ -1,0 +1,58 @@
+$dark: $gold;
+$light: #f3f3f3;
+
+//container
+#quick_reserve {
+    background-color: $light;
+}
+
+//active step
+.cart-arr.active{
+	background-color: $dark;
+}
+
+//nav bar
+.nav-bar {
+    background-color: $light;
+}
+
+//form field borders
+.box-qr100 input, 
+.box-qr100 select, 
+.quantity-content select, 
+.tabella_accessori select, 
+.tabella_accessori input {
+    border-color: $dark;
+}
+
+//buttons
+.continue-button a, 
+.close-button a, 
+.package-continue-button a{
+    background-color: $light;
+    color: #333;
+}
+
+.continue-button.active a, 
+.close-button.active a, 
+.package-continue-button.active a{
+	background-color: $light;
+    color: $dark
+}
+
+#search-button input{
+	background-color: $dark;
+	color: #fff;
+}
+
+//active step
+.cart-arr.active{
+	background-color: $dark;
+}
+
+//background pane mobile
+@media screen and (max-width: 768px){
+	#content{
+		background-color: #fff;
+	}
+}

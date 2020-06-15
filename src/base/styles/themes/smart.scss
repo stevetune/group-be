@@ -1,0 +1,125 @@
+$r: 223;
+$g: 166;
+$b: 113;
+
+@function get-rgba($r, $g, $b, $a){
+    @return rgba($r, $g, $b, $a)
+}
+
+
+@mixin bgColor($a){
+    background: get-rgba($r,$g,$b,$a) !important
+}
+
+@mixin color($a){
+    color: get-rgba($r,$g,$b,$a)
+}
+
+@mixin borderColor($a){
+    border-color: get-rgba($r,$g,$b,$a)
+}
+
+
+.progress-bar ul li.active a span.step-number {
+    background: transparent;
+    @include bgColor(1);
+    @include borderColor(1);
+}
+
+
+#cont_aggiungi_camere a, .nomecamera, .titolo_eta_bambini, .link_scheda .label_text, .ea-js-a-staylength 
+.row-link .fa, #dk_pulsante_cancella_modifica, .room_config .label .fa, #dettagli .accordion, .dettagliTariffa, 
+#riepilogo h2, .accordion, .container_info h2, #summary-box .titolo_tabella, .ricerca_mobile a {
+    @include color(1)
+}
+
+
+#steps ul li{
+    @include bgColor(.6)
+}
+
+#steps ul li.selected, #steps ul li.active, #steps ul li.active:hover{
+    @include bgColor(1)
+}
+
+
+
+
+#richiesta_pulsante_cerca input, .pulsantePrenota input, .div_availability .pulsante_giorno input, 
+.div_minstay .pulsante_giorno input, .first_page_hotel_offers input, 
+.cancellation_box input.button_cancellation, .booking_btn_sel, .trova_dispo_alternativa a span, .reserve-button input, 
+#soluzioni_tutte_offerta a, button.seleziona_giorno, .infowindow input, .seleziona_giorno_min_stay{
+    @include bgColor(1);
+
+    &:hover{
+        @include bgColor(.6)
+    }
+}  
+
+
+
+.chart-visible-desktop button, 
+#qr-overlay-wrapper .qr-title-close, 
+#tabella_dispo td .seleziona_giorno, 
+#richiesta_pulsante_cerca button, 
+#print-button input, 
+.locked, 
+.cb-popout-inner button, 
+.trova_dispo_alternativa a .show-button, 
+.seleziona_giorno, 
+.continue-button a, 
+a.pulsante_sel.modifica, 
+.mod a, a.pulsante_sel, 
+a.pulsante_sel, 
+a.pulsante, 
+a.pulsante, .chart-visible-mobile button, 
+#r_date, #carrello_mobile, 
+.row_tariffa .tariffa_dx .easyNotification .notification-buttons a{
+    @include bgColor(.6)
+}
+
+
+.chart-visible-desktop button:hover, 
+#qr-overlay-wrapper .qr-title-close:hover,
+#tabella_dispo td .seleziona_giorno:hover, 
+#richiesta_pulsante_cerca button:hover, 
+#print-button input:hover, 
+.locked:hover, 
+.cb-popout-inner button:hover, 
+.trova_dispo_alternativa a .show-button:hover, 
+.seleziona_giorno:hover, 
+.continue-button a:hover, 
+a.pulsante_sel.modifica:hover, 
+.mod a:hover, 
+#dettagli .accordion-open, 
+#dettagli .accordion-open-room, 
+#dettagli .accordion-open-rates, 
+.accordion-open-rate, 
+#dettagli .accordion-open-services-details,
+a.pulsante_sel:hover, 
+a.pulsante_sel:active, 
+a.pulsante:hover, 
+a.pulsante:active, 
+.chart-visible-mobile button:hover, 
+#r_date, #carrello_mobile, 
+.row_tariffa .tariffa_dx .easyNotification .notification-buttons a:hover{
+    @include bgColor(1)
+}
+
+
+.reservation-code-label, .rooms-label, .tit_pacchetto::before, .fa.icon-adulto::before, 
+.fa.icon-bambino::before, .qr-title-checkin-day.row span.titoletto, .summary_label, 
+.trova_dispo_alternativa a .fa, #summary-body #room-price, .offers-overlay .riepilogo .eti_lines .label {
+    @include color(1)
+}
+
+
+.carrello .services-title .sx, .carrello .services-title .dx {
+    @include color(1)
+}
+
+
+.discounted{
+    @include color(1)
+}
+
