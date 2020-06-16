@@ -1,0 +1,33 @@
+.flip-button{
+	font-size: 16px;
+	padding: 0;
+	display: block;
+	height: 40px;
+    width: 150px;
+	overflow: hidden;
+
+	&--top{		
+		background-color: #ccc;
+		transform-origin: top;
+	}
+
+	&:hover &--top{
+		transform: scale(1, 0);
+	}
+
+	&:hover &--bottom{
+		margin-top: -40px;
+	}
+
+	&--bottom{
+		background-color: #fff;
+	}
+
+	&--top,
+	&--bottom{
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		transition: all .3s ease-in;
+	}
+}
