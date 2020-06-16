@@ -17,13 +17,12 @@ const compileSass = (done) => {
 
 	//delete old config file and add new one
 	delete require.cache[require.resolve('./src/cover/config.js')]
-	const configAll = require('./src/cover/config.js')
-	const config = configAll.config
+	const { config } = require('./src/cover/config.js')
 
-	Object.keys(config.props).forEach(prop => {
+	Object.keys(config.properties).forEach(propertyName => {
 
-		let parentDir = config.props[prop].style.split("_")[0]
-		const srcFiles = _getStyleSrcFiles(prop, parentDir, configAll)
+		let parentDir = config.properties[propertyName].style.split("_")[0]
+		const srcFiles = _getStyleSrcFiles(propertyName, config)
 
 		gulp.src(srcFiles)
 			.pipe(sourcemaps.init())
@@ -33,12 +32,12 @@ const compileSass = (done) => {
 			
 			//without src maps
 			.pipe(concat('main-prod.css'))
-			.pipe(gulp.dest(`src/properties/${prop}/output`))
+			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			//with src maps
 			.pipe(concat('main.css'))
 			.pipe(sourcemaps.write())
-			.pipe(gulp.dest(`src/properties/${prop}/output`))
+			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			.pipe(wait(400))
 			.pipe(livereload())
@@ -51,28 +50,27 @@ const compilePug = (done) => {
 
 	//delete old config file and add new one
 	delete require.cache[require.resolve('./src/cover/config.js')]
-	const configAll = require('./src/cover/config.js')
-	const config = configAll.config
+	const { config } = require('./src/cover/config.js')
 
-	Object.keys(config.props).forEach(prop => {
+	Object.keys(config.properties).forEach(propertyName => {
 
-		const pugSrcFiles = _getPugSrcFiles(prop, config)
+		const pugSrcFiles = _getPugSrcFiles(propertyName, config)
 		
 		//delete old vars file and add new one
-		let varsFilePath = `./src/cover/vars/${config.props[prop].vars}.js`
+		let varsFilePath = `./src/cover/${config.properties[propertyName].vars}.js`
 		delete require.cache[require.resolve(varsFilePath)]
 		let varsFile = require(varsFilePath)
 
 		gulp.src(pugSrcFiles)
-			.pipe(pug({locals: Object.assign(varsFile,config.props[prop]), pretty: true}))
+			.pipe(pug({locals: Object.assign(varsFile,config.properties[propertyName]), pretty: true}))
 			.pipe(rename(path => {
 				path.basename = path.basename.includes('header') ? 'header' : path.basename
 				path.basename = path.basename.includes('footer') ? 'footer' : path.basename				
 			}))
 			.pipe(gulp.dest(file => {
 				return file.relative.includes("index") ? 
-					`./src/properties/${prop}` : 
-					`./src/properties/${prop}/output/`
+					`./src/properties/${propertyName}` : 
+					`./src/properties/${propertyName}/output/`
 			}))
 			.pipe(wait(400))
 			.pipe(livereload())
@@ -81,14 +79,14 @@ const compilePug = (done) => {
 	done()
 }
 
-const _getStyleSrcFiles = (prop, parentDir, configAll) => {
+const _getStyleSrcFiles = (propertyName, config) => {
 
 		let extras = []
 
 		//menu types
-		switch(configAll.config.props[prop].menuType.style){
+		switch(config.properties[propertyName].menuType.style){
 			case Menu_Style.SLIDELEFT:
-				extras.push('src/base/styles/modules/module-themes/mobile-menus/slide-left.scss')
+				extras.push('src/base/styles/modules/mobile-menus/slide-left.scss')
 				break
 
 			case Menu_Style.PAGES:
@@ -96,16 +94,16 @@ const _getStyleSrcFiles = (prop, parentDir, configAll) => {
 				break 
 
 			case Menu_Style.SLIDEDOWN:
-				extras.push('src/base/styles/modules/module-themes/mobile-menus/slide-down.scss')
+				extras.push('src/base/styles/modules/mobile-menus/slide-down.scss')
 				break 
 
 			case Menu_Style.ACCORDION:
-				extras.push('src/base/styles/modules/module-themes/mobile-menus/accordion.scss')
+				extras.push('src/base/styles/modules/mobile-menus/accordion.scss')
 				break		
 		}
 
 		//BE Type
-		switch(configAll.config.props[prop].type){
+		switch(config.properties[propertyName].type){
 			case BE_Type.SMART:
 
 				break
@@ -116,13 +114,13 @@ const _getStyleSrcFiles = (prop, parentDir, configAll) => {
 		}
 
 
-		return [].concat([`src/cover/styles/${parentDir}/${configAll.config.props[prop].style}.scss`], extras)
+		return [].concat([`src/cover/${config.properties[propertyName].style}.scss`], extras)
 }
 
-const _getPugSrcFiles = (prop, config) => {
+const _getPugSrcFiles = (propertyName, config) => {
 	return [
-			`./src/cover/markup/${config.props[prop].markup}/*.pug`,
-			`./src/cover/markup/${config.props[prop].markup}/lib/*.pug`
+			`./src/cover/${config.properties[propertyName].header}.pug`,
+			`./src/cover/${config.properties[propertyName].footer}.pug`
 		]
 }
 

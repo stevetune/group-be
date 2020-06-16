@@ -2,6 +2,13 @@ mixin icon(i_class, href, a_class="")
 	a(href=`${href}`, class=`${a_class}`)
 		i(class=`${i_class}`)
 
+mixin flipButton(btnHref, btnText)
+	a.flip-button(href=`${btnHref}`)
+		.flip-button--top
+			| #{btnText}
+		.flip-button--bottom
+			| #{btnText}
+
 mixin headerLogo()
 	span.header-logo
 			a.header-logo--link(href=`${website_url}`)
@@ -29,7 +36,7 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 							ul.main-menu--submenu(data-collapsed='true')
 								for subitem in item.submenu
 									li.main-menu--item.main-menu--item-sub
-										a.main-menu--anchor(href=`${subitem.href}`)
+										a.main-menu--anchor.main-menu--anchor-sub(href=`${subitem.href}`)
 											| #{subitem.title}
 
 
@@ -50,7 +57,5 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 	//Accordion
 	if mobileMenuType == 4
 		script(src='./../../base/markup/includes/javascript/mobile-menus/accordion.js')
-			
-
 
 

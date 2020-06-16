@@ -2,12 +2,13 @@ const { BE_Type, Menu_Style } = require('../base/enum_types.js')
 
 const config = {
 	production: false,
-	props : {
+	properties : {
 		"generic-place": {
 			type: BE_Type.ADVANCED,
-			style: "s1_1",
-			markup: "m1",
-			vars: "v1",
+			style: "style1",
+			header: "header1",
+			footer: "footer1",
+			vars: "vars1",
 			menuType: {
 				style: Menu_Style.ACCORDION,
 				hasCloseBtn: false
