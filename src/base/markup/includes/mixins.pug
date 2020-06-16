@@ -15,7 +15,7 @@ mixin burger()
 
 mixin headerMenu(mobileMenuType, hasCloseBtn)
 	nav.main-menu.is-collapsible
-		ul.main-menu--menu
+		ul.main-menu--menu(data-collapsed='true')
 			if hasCloseBtn
 				li.main-menu--close-btn
 					.x-button
@@ -25,90 +25,32 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 						a.main-menu--anchor(href=`${item.href}`)
 							| #{item.title}
 						if item.submenu
-							ul.main-menu--submenu
+							span.main-menu--plus-button +
+							ul.main-menu--submenu(data-collapsed='true')
 								for subitem in item.submenu
 									li.main-menu--item.main-menu--item-sub
 										a.main-menu--anchor(href=`${subitem.href}`)
 											| #{subitem.title}
 
 
-	script.
-		document.querySelector(".x-button").onclick = () => {
-			document.querySelector(".main-menu").classList.remove("is-visible")
-			document.body.classList.remove("is-not-scrollable")
-		}
+	script(src='./../../base/markup/includes/javascript/mobile-menus/main.js')
 
+	//Slide Left 
 	if mobileMenuType == 1
-		script.
-			document.querySelector(".burger").onclick = () => {
-				document.querySelector(".main-menu").classList.toggle("is-visible")
-				document.body.classList.add("is-not-scrollable")	
-			}
+		script(src='./../../base/markup/includes/javascript/mobile-menus/slide-left.js')
+			
+	//Slide Down and Accordion
+	if mobileMenuType == 3 || mobileMenuType == 4 
+		script(src='./../../base/markup/includes/javascript/mobile-menus/lib/menu-sections.js')
 
-			document.querySelector(".main-menu--item.has-submenu").onclick = (e) => {
-				e.preventDefault()
-				document.querySelector(".main-menu").classList.add("is-show-right")
-			}
-
-			document.querySelector(".main-menu--back-btn").onclick = (e) => {
-				e.preventDefault()
-				e.stopPropagation()
-				document.querySelector(".main-menu").classList.remove("is-show-right")
-			}
-
+	//Slide Down
 	if mobileMenuType == 3
-		script.
-			const collapseMenu = (element) => {
-			  	let menuHeight = element.scrollHeight;
-			  	let elementTransition = element.style.transition;
-			  	element.style.transition = '';
+		script(src='./../../base/markup/includes/javascript/mobile-menus/expand-down.js')
 			
-			  	requestAnimationFrame(() => {
-			    	element.style.height = menuHeight + 'px';
-			    	element.style.transition = elementTransition;
+	//Accordion
+	if mobileMenuType == 4
+		script(src='./../../base/markup/includes/javascript/mobile-menus/accordion.js')
 			
-			    	requestAnimationFrame(() => {
-			      		element.style.height = 0 + 'px';
-			    	});
-			  	});
-			  
-				element.setAttribute('data-collapsed', 'true');
-			}
-
-			const expandMenu = (element) => {
-			  	let menuHeight = element.scrollHeight;
-			  	element.style.height = menuHeight + 'px';
-
-			  	element.addEventListener('transitionend', (e) => {
-			    	element.removeEventListener('transitionend', arguments.callee);
-			    
-			    	element.style.height = null;
-			  	});
-			  
-			  	element.setAttribute('data-collapsed', 'false');
-			}
-			
-			document.querySelector('.burger').addEventListener('click', (e) => {
-			  	let isCollapsed = menu.getAttribute('data-collapsed') === 'true';
-			    
-			  	if(isCollapsed) {
-			    	expandMenu(menu)
-			    	menu.setAttribute('data-collapsed', 'false')
-			  	} else {
-			    	collapseMenu(menu)
-			  	}
-			});
-
-			let menu = document.querySelector('.main-menu.is-collapsible');
-			menu.setAttribute('data-collapsed', 'true');
-			menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
-			menu.style.display = 'block';
-
-			window.addEventListener('resize', () => {
-				menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
-			})
-
-
 
 
 

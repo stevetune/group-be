@@ -9,12 +9,12 @@ const config = {
 			markup: "m1",
 			vars: "v1",
 			menuType: {
-				style: Menu_Style.SLIDEDOWN,
-				hasCloseBtn: true
+				style: Menu_Style.ACCORDION,
+				hasCloseBtn: false
 			}
 		},
 		//...
 	}
 }
 
-module.exports = { BE_Type, Menu_Style, config }
+module.exports = { config }

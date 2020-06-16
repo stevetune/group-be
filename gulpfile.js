@@ -7,7 +7,8 @@ let gulp = require("gulp"),
 	sourcemaps = require('gulp-sourcemaps'),
 	wait = require('gulp-wait'),
 	rename = require("gulp-rename"),
-	concat = require('gulp-concat')
+	concat = require('gulp-concat'),
+	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js') 
 
 
 const compileSass = (done) => {
@@ -86,29 +87,30 @@ const _getStyleSrcFiles = (prop, parentDir, configAll) => {
 
 		//menu types
 		switch(configAll.config.props[prop].menuType.style){
-			case configAll.Menu_Style.SLIDELEFT:
-				extras.push('src/base/styles/themes/slideleft-mobile-menu.scss')
+			case Menu_Style.SLIDELEFT:
+				extras.push('src/base/styles/modules/module-themes/mobile-menus/slide-left.scss')
 				break
 
-			case configAll.Menu_Style.PAGES:
+			case Menu_Style.PAGES:
 
 				break 
 
-			case configAll.Menu_Style.SLIDEDOWN:
-				extras.push('src/base/styles/themes/slidedown-mobile-menu.scss')
+			case Menu_Style.SLIDEDOWN:
+				extras.push('src/base/styles/modules/module-themes/mobile-menus/slide-down.scss')
 				break 
 
-			case configAll.Menu_Style.ACCORDION:
+			case Menu_Style.ACCORDION:
+				extras.push('src/base/styles/modules/module-themes/mobile-menus/accordion.scss')
 				break		
 		}
 
 		//BE Type
 		switch(configAll.config.props[prop].type){
-			case configAll.BE_Type.SMART:
+			case BE_Type.SMART:
 
 				break
 
-			case configAll.BE_Type.ADVANCED:
+			case BE_Type.ADVANCED:
 				extras.push('src/base/styles/themes/advanced.scss')
 				break
 		}

@@ -3,7 +3,7 @@
 	left: 0;
 	top: 104px;
 	width: 100%;
-	background-color: #fed2d2;
+	background-color: #ee77ee;
 
 	&--anchor{
 		font-size: 14px;
@@ -14,6 +14,11 @@
 
 	&--submenu &--anchor{
 		padding: 10px 20px;
+	}
+
+	//for accordion menu
+	&--plus-button{
+		display: none;
 	}
 
 	@include desktop{
