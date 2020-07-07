@@ -4,20 +4,31 @@
 		+icon(ti.class, ti.href, "is-top")
 
 	if locals.footer_locations
-		.footer-location--locations
-			each location in locals.footer_locations
-				.footer-location--location
-					.footer-location--title #{location.title}
-					.footer-location--address-container
-						.footer-location--line #{location.address_line_1}
-						.footer-location--line #{location.address_line_2}
-						.footer-location--line #{location.phone_text}
-						.footer-location--line #{location.fax_text}
-						.footer-location--line #{location.email_text}
-					
-						if location.icons
-							.footer-location--icons
-								each icon in location.icons
-									+icon(icon.class, icon.href)
+		each location in locals.footer_locations
+			.footer-location--location
+				.footer-location--title #{location.title}
+				if location.links
+					each link in location.links
+						a.footer-location--line.footer-location--anchor(href=`${link.href}`) #{link.title}
+				.footer-location--address-container
+					.footer-location--line !{location.address_line_1}
+					.footer-location--line !{location.address_line_2}
+					.footer-location--line
+						if location.phone_href
+							a.footer-location--anchor(href=`${location.phone_href}`)
+								span.footer-location--anchor-text !{location.phone_text}
+						else
+							| !{location.phone_text}	
+					.footer-location--line !{location.fax_text}
+					.footer-location--line 
+						if location.email_href
+							a.footer-location--anchor(href=`${location.email_href}`)
+								span.footer-location--anchor-text !{location.email_text}
+						else
+							| !{location.email_text}
+					if location.icons
+						.footer-location--icons
+							each icon in location.icons
+								+icon(icon.class, icon.href)
 
-							
+						

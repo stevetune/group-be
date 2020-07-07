@@ -8,6 +8,7 @@ const config = {
 			style: "style1",
 			header: "header1",
 			footer: "footer1",
+			index: "index1",
 			vars: "vars1",
 			menuType: {
 				style: Menu_Style.ACCORDION,

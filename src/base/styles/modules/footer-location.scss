@@ -1,4 +1,6 @@
 .footer-location{
+	display: flex;
+
  	&--title{
          font-weight: 700; 
          font-size: 14px;
@@ -15,5 +17,9 @@
 
  	&--line:nth-of-type(3){
          margin-top: 23px;
+ 	}
+
+ 	&--anchor{
+ 		display: block;
  	}
 }

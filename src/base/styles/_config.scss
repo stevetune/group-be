@@ -3,15 +3,15 @@ $lightblue: #4593ba;
 $brown: #3c342f;
 
 /* booking engine container colors */
-$rgb_red: 255;
-$rgb_green: 0;
-$rgb_blue: 255;
+$rgb_red: 27;
+$rgb_green: 164;
+$rgb_blue: 127;
 
 @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
 
 $container-width: 1290px;
 
-$mobile-width: 768px;
+$mobile-width: 900px;
 // $tablet-width: 1200px;
 
 @mixin desktop {

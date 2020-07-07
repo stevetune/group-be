@@ -20,6 +20,9 @@ mixin burger()
 		.burger--slice.burger--middle-slice
 		.burger--slice
 
+mixin plusMinus()
+	.plus-minus
+
 mixin headerMenu(mobileMenuType, hasCloseBtn)
 	nav.main-menu.is-collapsible
 		ul.main-menu--menu(data-collapsed='true')
@@ -31,8 +34,9 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 					li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
 						a.main-menu--anchor(href=`${item.href}`)
 							| #{item.title}
+							if item.submenu
+								+plusMinus()
 						if item.submenu
-							span.main-menu--plus-button +
 							ul.main-menu--submenu(data-collapsed='true')
 								for subitem in item.submenu
 									li.main-menu--item.main-menu--item-sub

@@ -20,6 +20,8 @@
 	//for accordion menu
 	&--plus-button{
 		display: none;
+		display: flex;
+    	align-items: center;
 	}
 
 	@include desktop{

@@ -35,6 +35,7 @@ const expandMenuSection = (element, isInner = false) => {
 
 const expandOrCollapseMenuSection = (element, isInner) => {
   let isCollapsed = element.getAttribute('data-collapsed') === 'true';
+  console.log(isCollapsed)
 
   if(isCollapsed) { 
     expandMenuSection(element, isInner)
@@ -48,9 +49,9 @@ const expandOrCollapseMenuSection = (element, isInner) => {
 //add/remove on resize
 let menu = document.querySelector('.main-menu.is-collapsible');
 menu.setAttribute('data-collapsed', 'true');
-menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
+menu.style.height =  window.innerWidth > 900 ? 'initial': '0px';
 menu.style.display = 'block';
 
 window.addEventListener('resize', () => {
-  menu.style.height =  window.innerWidth > 768 ? 'initial': '0px';
+  menu.style.height =  window.innerWidth > 900 ? 'initial': '0px';
 })

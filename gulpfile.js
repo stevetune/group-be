@@ -55,7 +55,9 @@ const compilePug = (done) => {
 	Object.keys(config.properties).forEach(propertyName => {
 
 		const pugSrcFiles = _getPugSrcFiles(propertyName, config)
-		
+		console.log(pugSrcFiles)
+
+
 		//delete old vars file and add new one
 		let varsFilePath = `./src/cover/${config.properties[propertyName].vars}.js`
 		delete require.cache[require.resolve(varsFilePath)]
@@ -65,7 +67,8 @@ const compilePug = (done) => {
 			.pipe(pug({locals: Object.assign(varsFile,config.properties[propertyName]), pretty: true}))
 			.pipe(rename(path => {
 				path.basename = path.basename.includes('header') ? 'header' : path.basename
-				path.basename = path.basename.includes('footer') ? 'footer' : path.basename				
+				path.basename = path.basename.includes('footer') ? 'footer' : path.basename
+				path.basename = path.basename.includes('index') ? 'index' : path.basename				
 			}))
 			.pipe(gulp.dest(file => {
 				return file.relative.includes("index") ? 
@@ -99,6 +102,7 @@ const _getStyleSrcFiles = (propertyName, config) => {
 
 			case Menu_Style.ACCORDION:
 				extras.push('src/base/styles/modules/mobile-menus/accordion.scss')
+				extras.push('src/base/styles/modules/plus-minus.scss')
 				break		
 		}
 
@@ -120,7 +124,8 @@ const _getStyleSrcFiles = (propertyName, config) => {
 const _getPugSrcFiles = (propertyName, config) => {
 	return [
 			`./src/cover/${config.properties[propertyName].header}.pug`,
-			`./src/cover/${config.properties[propertyName].footer}.pug`
+			`./src/cover/${config.properties[propertyName].footer}.pug`,
+			`./src/cover/${config.properties[propertyName].index}.pug`
 		]
 }
 

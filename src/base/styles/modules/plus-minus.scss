@@ -1,0 +1,35 @@
+
+.plus-minus{
+	--psSize: 10px;
+	--psStrokeWidth:2px;
+	--psColor: #fff;
+  width:var(--psSize);
+  height:var(--psSize);
+  position:relative;
+  
+  &::before,&::after{
+    content:'';
+    display:inline-block;
+    box-sizing:border-box;
+    background:var(--psColor);
+    position:absolute;
+  }
+  
+  &::before{
+    width: var(--psStrokeWidth);
+    height:var(--psSize);
+    left: calc(50% - #{var(--psStrokeWidth) / 2});
+    transition: transform .2s ease-in;
+
+  }
+
+   &::after{
+    width:var(--psSize);
+     height:var(--psStrokeWidth);
+     bottom: calc(50% - #{var(--psStrokeWidth) / 2});
+  }
+}
+
+.main-menu--item:hover .plus-minus::before{
+	transform: scaleY(0);
+}

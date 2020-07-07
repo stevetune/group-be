@@ -1,33 +1,10 @@
 extends ../base/markup/header.pug		
 
 block prepend headerBlock
-	
-//- block headerBlock
-//- 	.l-flex-column#header-inner
-//- 		+headerLogo()
-
-//- 		+burger()
-	
-//- 		+headerMenu()
-
-//- 	script.
-//- 		document.querySelector(".burger").onclick = () => {
-//- 			document.querySelector(".main-menu").classList.add("is-visible")
-//- 			document.body.classList.add("is-not-scrollable")	
-//- 		}
-
-//- 		document.querySelector(".x-button").onclick = () => {
-//- 			document.querySelector(".main-menu").classList.remove("is-visible")
-//- 			document.body.classList.remove("is-not-scrollable")
-//- 		}
-
-//- 		document.querySelector(".main-menu--item.has-submenu").onclick = (e) => {
-//- 			e.preventDefault()
-//- 			document.querySelector(".main-menu").classList.add("is-show-right")
-//- 		}
-
-//- 		document.querySelector(".main-menu--back-btn").onclick = (e) => {
-//- 			e.preventDefault()
-//- 			e.stopPropagation()
-//- 			document.querySelector(".main-menu").classList.remove("is-show-right")
-//- 		}
+	.l-container
+		.header-contact-info
+			.header-contact-info--item 
+				a(href='tel:(773) 288-5800') PHONE: (773) 288-5800
+			.header-contact-info--item 
+				a(href='mailto: reservations@chicagolakeshorehotel.com') EMAIL: RESERVATIONS@CHICAGOLAKESHOREHOTEL.COM
+			.header-contact-info--item 4900B S. Lake Shore Drive Chicago, IL 60615
