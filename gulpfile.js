@@ -82,6 +82,11 @@ const compilePug = (done) => {
 	done()
 }
 
+const compileHandlebars = (done) => {
+	console.log('compiling handlebars')
+	done()
+}
+
 const _getStyleSrcFiles = (propertyName, config) => {
 
 		let extras = []
@@ -133,16 +138,16 @@ const watchFunc = function(done)
 {
 	livereload.listen()
 	gulp.watch(["src/**/*.pug", "src/**/*.js"], compilePug)
+	gulp.watch(["src/**/*.hbs", "src/**/*.js"], compileHandlebars)
 	gulp.watch(["src/**/*.scss", "src/cover/config.js"], compileSass)
 
 	done()
 }
 
-exports.watch = gulp.series(compileSass, compilePug, watchFunc)
-exports.compilePug = compilePug
-exports.compileSass = compileSass
-
-
+exports.watch = gulp.series(compileSass, compilePug, compileHandlebars, watchFunc)
+exports.pug = compilePug
+exports.sass = compileSass
+exports.handlebars = compileHandlebars
 
 
 
