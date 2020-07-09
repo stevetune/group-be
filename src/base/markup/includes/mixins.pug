@@ -1,6 +1,9 @@
-mixin icon(i_class, href, a_class="")
-	a(href=`${href}`, class=`${a_class}`)
-		i(class=`${i_class}`)
+mixin icon(i_class, href, a_class='', text='')
+	.icon
+		a(href=`${href}`, class=`icon--anchor ${a_class}`)
+			i(class=`icon--icon ${i_class}`)
+			if text
+				span.icon--text #{text}
 
 mixin flipButton(btnHref, btnText)
 	a.flip-button(href=`${btnHref}`)
