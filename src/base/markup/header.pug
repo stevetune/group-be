@@ -2,7 +2,8 @@ include includes/mixins
 
 header#header
 	block headerBlock
-		.l-container.l-flex#header-upper
-			+headerLogo()
-			+burger()
-			+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn)
+		#header-lower
+			.l-container.l-flex
+				+headerLogo()
+				+burger()
+				+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn)
