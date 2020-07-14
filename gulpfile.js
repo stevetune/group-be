@@ -8,8 +8,8 @@ let gulp = require("gulp"),
 	wait = require('gulp-wait'),
 	rename = require("gulp-rename"),
 	concat = require('gulp-concat'),
-	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js') 
-
+	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
+	es = require('event-stream')
 
 const compileSass = (done) => {
 
@@ -35,9 +35,13 @@ const compileSass = (done) => {
 			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			//with src maps
-			.pipe(concat('main.css'))
-			.pipe(sourcemaps.write())
-			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+			es.merge(
+				gulp.src('src/cover/dev-only.scss')
+				.pipe(sass({outputStyle: "compressed"}))
+				.pipe(concat('main.css'))
+				.pipe(sourcemaps.write())
+				.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+			)
 
 			.pipe(wait(400))
 			.pipe(livereload())
