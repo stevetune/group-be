@@ -46,23 +46,23 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 										a.main-menu--anchor.main-menu--anchor-sub(href=`${subitem.href}`)
 											| #{subitem.title}
 
-
-	script(src='./../../base/markup/includes/javascript/mobile-menus/main.js')
+	
+	include ./../../markup/includes/javascript/mobile-menus/main.pug
 
 	//Slide Left 
-	if mobileMenuType == 1
-		script(src='./../../base/markup/includes/javascript/mobile-menus/slide-left.js')
+	if mobileMenuType == 1	
+		include ./../../markup/includes/javascript/mobile-menus/slide-left.pug
 			
 	//Slide Down and Accordion
-	if mobileMenuType == 3 || mobileMenuType == 4 
-		script(src='./../../base/markup/includes/javascript/mobile-menus/lib/menu-sections.js')
+	if mobileMenuType == 3 || mobileMenuType == 4 	
+		include ./../../markup/includes/javascript/mobile-menus/lib/menu-sections.pug
 
 	//Slide Down
 	if mobileMenuType == 3
-		script(src='./../../base/markup/includes/javascript/mobile-menus/expand-down.js')
+		include ./../../markup/includes/javascript/mobile-menus/expand-down.pug
 			
 	//Accordion
 	if mobileMenuType == 4
-		script(src='./../../base/markup/includes/javascript/mobile-menus/accordion.js')
+		include ./../../markup/includes/javascript/mobile-menus/accordion.pug
 
 
