@@ -25,23 +25,32 @@ const compileSass = (done) => {
 		const srcFiles = _getStyleSrcFiles(propertyName, config)
 
 		gulp.src(srcFiles)
-			.pipe(sourcemaps.init())
 			.pipe(sassGlob())
 			.pipe(sass({outputStyle: "compressed"}))
 			.pipe(cleanCss())
 			
 			//without src maps
-			.pipe(concat('main-prod.css'))
+			.pipe(concat('prod.css'))
 			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			//with src maps
 			es.merge(
+				gulp.src(srcFiles)
+					.pipe(sourcemaps.init())
+					.pipe(sassGlob())
+					.pipe(sass({outputStyle: "compressed"}))
+				 	.pipe(cleanCss())
+					.pipe(sourcemaps.write()),
+
 				gulp.src('src/cover/dev-only.scss')
-				.pipe(sass({outputStyle: "compressed"}))
-				.pipe(concat('main.css'))
-				.pipe(sourcemaps.write())
-				.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+					.pipe(sourcemaps.init())
+					.pipe(sassGlob())
+					.pipe(sass({outputStyle: "compressed"}))
+				 	.pipe(cleanCss())
+					.pipe(sourcemaps.write())
 			)
+			.pipe(concat('dev.css'))
+			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			.pipe(wait(400))
 			.pipe(livereload())
