@@ -9,7 +9,8 @@ let gulp = require("gulp"),
 	rename = require("gulp-rename"),
 	concat = require('gulp-concat'),
 	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
-	es = require('event-stream')
+	streamQueue = require('streamqueue')
+
 
 const compileSass = (done) => {
 
@@ -24,31 +25,30 @@ const compileSass = (done) => {
 		let parentDir = config.properties[propertyName].style.split("_")[0]
 		const srcFiles = _getStyleSrcFiles(propertyName, config)
 
-		gulp.src(srcFiles)
+		const prodSass = gulp.src(srcFiles)
 			.pipe(sassGlob())
 			.pipe(sass({outputStyle: "compressed"}))
 			.pipe(cleanCss())
-			
-			//without src maps
 			.pipe(concat('prod.css'))
-			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+			
+
+			prodSass.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 
 			//with src maps
-			es.merge(
-				gulp.src(srcFiles)
-					.pipe(sourcemaps.init())
-					.pipe(sassGlob())
-					.pipe(sass({outputStyle: "compressed"}))
-				 	.pipe(cleanCss())
-					.pipe(sourcemaps.write()),
+			const devOnlySass = gulp.src('src/cover/dev-only.scss')
+					.pipe( sourcemaps.init() )
+					.pipe( sass({outputStyle: "compressed"}) )
+				 	.pipe( cleanCss() )
+					.pipe( sourcemaps.write() )
 
-				gulp.src('src/cover/dev-only.scss')
+			const devSass = gulp.src(srcFiles)
 					.pipe(sourcemaps.init())
 					.pipe(sassGlob())
 					.pipe(sass({outputStyle: "compressed"}))
 				 	.pipe(cleanCss())
 					.pipe(sourcemaps.write())
-			)
+
+			streamQueue({ objectMode: true },devSass, devOnlySass)
 			.pipe(concat('dev.css'))
 			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
 

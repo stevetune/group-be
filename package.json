@@ -24,7 +24,8 @@
     "gulp-sass-glob": "^1.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-wait": "0.0.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "streamqueue": "^1.1.2"
   },
   "dependencies": {
     "express": "^4.17.1"
