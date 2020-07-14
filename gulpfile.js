@@ -97,6 +97,10 @@ const _getStyleSrcFiles = (propertyName, config) => {
 				extras.push('src/base/styles/modules/mobile-menus/slide-left.scss')
 				break
 
+			case Menu_Style.SLIDERIGHT:
+				extras.push('src/base/styles/modules/mobile-menus/slide-right.scss')
+				break
+
 			case Menu_Style.PAGES:
 
 				break 

@@ -11,8 +11,10 @@ const config = {
 			index: "index1",
 			vars: "vars1",
 			menuType: {
-				style: Menu_Style.ACCORDION,
-				hasCloseBtn: false
+				style: Menu_Style.SLIDERIGHT,
+				//style: Menu_Style.SLIDELEFT,
+				hasCloseBtn: true,
+				hasPlusMinus: false
 			}
 		},
 		//...

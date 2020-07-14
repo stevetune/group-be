@@ -26,7 +26,7 @@ mixin burger()
 mixin plusMinus()
 	.plus-minus
 
-mixin headerMenu(mobileMenuType, hasCloseBtn)
+mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
 	nav.main-menu.is-collapsible
 		ul.main-menu--menu(data-collapsed='true')
 			if hasCloseBtn
@@ -37,7 +37,7 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 					li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
 						a.main-menu--anchor(href=`${item.href}`)
 							| #{item.title}
-							if item.submenu
+							if item.submenu && hasPlusMinus
 								+plusMinus()
 						if item.submenu
 							ul.main-menu--submenu(data-collapsed='true')
@@ -52,6 +52,10 @@ mixin headerMenu(mobileMenuType, hasCloseBtn)
 	//Slide Left 
 	if mobileMenuType == 1	
 		include ./../../markup/includes/javascript/mobile-menus/slide-left.pug
+
+	//Slide Right 
+	if mobileMenuType == 5	
+		include ./../../markup/includes/javascript/mobile-menus/slide-right.pug
 			
 	//Slide Down and Accordion
 	if mobileMenuType == 3 || mobileMenuType == 4 	
