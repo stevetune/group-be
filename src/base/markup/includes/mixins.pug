@@ -36,7 +36,7 @@ mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
 				for item in locals.menu
 					li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
 						a.main-menu--anchor(href=`${item.href}`)
-							| #{item.title}
+							| !{item.title}
 							if item.submenu && hasPlusMinus
 								+plusMinus()
 						if item.submenu
