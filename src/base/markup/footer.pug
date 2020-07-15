@@ -4,10 +4,15 @@ footer#footer
 	#footer-upper
 		block footerUpper
 			.l-container
-				include includes/footer_locations
+				include includes/footer_sections
 			
 
 	#footer-lower
 		block footerLower
 			.l-container
 				include includes/footer_copyright
+
+		append footerLower
+			.l-container
+				.footer-bottom-section
+					img.footer-bottom-section--image(src="https://www.thewindsorsuites.com//assets/images/logo-modus.png")

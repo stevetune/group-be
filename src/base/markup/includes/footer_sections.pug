@@ -1,0 +1,30 @@
+include mixins
+
+.footer-sections
+	if locals.footer_sections
+		each section in locals.footer_sections
+			.footer-sections--section
+				each object in section
+					if object.type == 'header'
+						h2.footer-sections--section-header !{object.value} 
+					
+					if object.type == 'text'
+						.footer-sections--section-text #{object.value}
+					
+					if object.type == 'html'
+						.footer-sections--section-text.footer-sections--section-html !{object.value}
+					
+					if object.type == 'anchor'
+						a.footer-sections--anchor(href=`${object.value.href}`)
+							span.footer-sections--anchor-text #{object.value.text}
+					
+					if object.type == 'image'
+						img.footer-sections--image-src(src=`${object.value}`)
+					
+					if object.type == 'image_with_anchor'
+						a.footer-sections--image-with-anchor-href(href=`${object.value.href}`)
+							img.footer-sections--image-with-anchor-src(src=`${object.value.src}`)
+					
+					if object.type == 'icon_with_anchor'
+						.footer-sections--icon 
+							+icon(object.value.icon_class, object.value.href, object.value.additional_classes, object.value.text)

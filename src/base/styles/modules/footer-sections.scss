@@ -1,0 +1,25 @@
+.footer-sections{
+	display: flex;
+
+	&--section{
+		flex-basis: 33%;
+	}
+
+ 	&--title{
+   font-weight: 700; 
+   font-size: 14px;
+   text-transform: uppercase;
+   margin-bottom: 30px;
+   letter-spacing: 1px;
+ 	}
+
+ 	&--section > *{
+   color: #333355;
+   font-size: 16px;
+   line-height: 23px;
+ 	}
+
+ 	&--anchor{
+ 		display: block;
+ 	}
+}
