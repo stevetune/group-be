@@ -25,7 +25,8 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-wait": "0.0.2",
     "nodemon": "^2.0.4",
-    "streamqueue": "^1.1.2"
+    "streamqueue": "^1.1.2",
+    "lodash": ">=4.17.19"
   },
   "dependencies": {}
 }
