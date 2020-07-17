@@ -7,8 +7,11 @@ script.
 		document.querySelector(".main-menu").classList.add("is-show-left")
 	}
 
-	document.querySelector(".main-menu--back-btn").onclick = (e) => {
-		e.preventDefault()
-		e.stopPropagation()
-		document.querySelector(".main-menu").classList.remove("is-show-left")
+	const mmBB = document.querySelector('.main-menu--back-btn')
+	if(mmBB){
+		mmBB.onclick = (e) => {
+			e.preventDefault()
+			e.stopPropagation()
+			document.querySelector(".main-menu").classList.remove("is-show-left")
+		}
 	}
