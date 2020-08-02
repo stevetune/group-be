@@ -1,0 +1,20 @@
+body{
+	overflow-y: scroll;
+
+	// &::before{
+	// 	content: '';
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	background-color: rgba(0,0,0,.74) !important;
+	// 	position: absolute;
+	// }
+}
+
+#footer{
+	//display: none;
+}
+
+#header{
+	//display: none;
+	z-index: 2;
+}

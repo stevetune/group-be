@@ -1,0 +1,9 @@
+//- include ./../base/markup/mixins
+extends ./../base/markup/header.pug
+
+block headerBlock
+	.l-container.l-flex
+		.textual-header-logo
+			.textual-header-logo--upper VILLA ITALIA
+			.textual-header-logo--lower SOUTH BEACH MIAMI
+		+headerMenu(locals.menu.type, locals.menu.options.has_close_btn, locals.menu.options.has_plus_minus)

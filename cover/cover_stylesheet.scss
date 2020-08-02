@@ -1,0 +1,256 @@
+/* ESSENTIAL IMPORTS */
+@import '../base/styles/config.scss';
+@import '../base/styles/base.scss';
+@import '../base/styles/layout.scss';
+@import '../base/styles/modules/*.scss';
+
+/* VARIABLES */
+$rgb_red: 37;
+$rgb_green: 62;
+$rgb_blue: 150;
+
+/* STYLES */
+
+/* config */
+$lightblue: rgba(142, 196, 231, 1);
+$light_grey: rgba(237, 233, 225, 1);
+$dark_grey: #444;
+$dark_blue: rgba(18, 52, 117, 0.72);
+
+
+@font-face {
+    font-family: 'Lulo Clean Bold';
+    src: url('https://reservations.verticalbooking.com/img_templ/img_stili_12847/LuloCleanW01-OneBold.woff2.woff') format('woff2'),
+        url('https://reservations.verticalbooking.com/img_templ/img_stili_12847/LuloCleanW01-OneBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* base */
+body{
+	background: url(https://reservations.verticalbooking.com/img_templ/img_stili_12847/bg.jpg) center/cover fixed !important;
+}
+
+/* layout */
+#header, #footer{
+	-webkit-font-smoothing: auto;
+}
+
+#header{
+	padding-top:122px;
+	background-color: transparent;
+	display: flex;	
+	align-items:center;
+}
+
+#header > .l-container{
+	display: flex;
+	align-items: center;
+
+}
+
+#footer{
+	background-color: $lightblue;
+	color: red;
+	font: 400 21px/1em Raleway; 
+	color: #fff;
+	letter-spacing: 0.63px;
+
+	padding: 60px 0 80px;
+}
+
+#footer-upper{
+	width: 100%;
+}
+
+/* modules */
+.main-menu{
+	display: inline-flex;
+	margin-left: auto;
+	width: auto;
+	padding-bottom: 0;
+	position: relative;
+	top: 1px;
+  left: 4px;
+  flex-wrap: nowrap;
+  min-width: 802px;
+
+  &::before{
+  	content: '';
+    width: 100%;
+    height: 22px;
+    background-color: rgba(0,0,0,.5);
+    margin: 5px 0 0 5px;
+    position: absolute;
+    border-radius: 15px;
+    left: -5px;
+    top: -4px;
+    z-index: -1;
+  }
+
+	&--item{
+			background: url(https://static.parastorage.com/services/skins/2.1229.80/images/wysiwyg/core/themes/base/shiny1button_bg.png) center/contain $dark_blue repeat-x; 
+		margin-right: 0 !important;
+	}
+
+	&--item-top{
+		// background-color: $dark_blue;//rgba(18, 52, 117, 0.72);
+		margin-left: 0 !important;
+		border-right: solid 1px #000;
+		display: flex;
+		align-items:center;
+		height: 22px;
+
+		$radius: 15px;
+		
+		&:first-of-type{
+			border-top-left-radius: $radius;
+			border-bottom-left-radius: $radius;
+		}
+
+		&:last-of-type{
+			border-top-right-radius: $radius;
+			border-bottom-right-radius: $radius;
+		}
+	}
+
+	// &--item-top:first-of-type{
+	// 	background-color: $light_grey;
+	// 	.main-menu--anchor{
+	// 		color: $dark_grey;
+	// 	}
+	// }
+
+	&--item-sub{
+		text-align: center;
+		background-color: $light_grey;
+		box-shadow: 1px 1px 3px #000;
+	}
+
+	$submenu_radius: 9px;
+	&--item-sub:first-of-type{
+		border-top-right-radius: $submenu_radius;
+		border-top-left-radius: $submenu_radius;
+	}
+
+	&--item-sub:last-of-type{
+		border-bottom-right-radius: $submenu_radius;
+		border-bottom-left-radius: $submenu_radius;
+	}
+
+	&--item-sub:hover{
+		background-color: $light_grey;
+	}
+
+	&--anchor{
+		color: #fff;
+		font-family: Caudex !important;
+		font-size: 20px !important;
+		font-weight: 700 !important;
+		padding: 0 27.5px;
+		display: inline-block;
+		white-space: pre;
+	}
+
+	&--anchor-sub{
+		font-weight: 400;
+		font-size: 12px;
+		color: $dark_grey !important;
+		display: block;
+	}
+
+	&--item-top.has-submenu{
+		position: relative;
+	}
+
+	&--submenu{
+		background-color: transparent;
+		padding-top: 6px;
+		position: absolute;
+    top: 22px;
+    width: 230px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+	}
+
+	&--submenu &--anchor{
+		display: block;
+    line-height: 22px;
+    padding: 5px 0 !important;
+	}
+
+	&--item-sub:hover{
+		background-color: lighten($light_grey, 6%);
+	}
+}
+
+.burger{
+	&--slice{
+		background-color: #fff;
+	}
+}
+
+.textual-header-logo{
+	color: #fff;
+	font-family: 'Lulo Clean Bold';
+	margin-left: 38px;
+
+	&--upper{
+		white-space: pre;
+		font-size: 24px;
+		line-height: 37px;
+	}
+
+	&--lower{
+		white-space: pre;
+		font-size: 15px;
+		color: #E9DB89;
+	}
+}
+
+.footer-sections{
+	padding: 0 78px;
+
+	&--section:nth-of-type(2){
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&--section:not(:first-of-type){
+		margin-left: 80px;
+	}
+
+	&--section:nth-of-type(2)	&--section-text{
+		width: 100%;
+	}
+
+	&--section-text{
+		color: #fff;
+		font-size: 21px;
+		line-height: 27px;
+	}
+
+	&--section::before{
+		display: block;
+		content: '';
+    width: 39px;
+    height: 3px;
+    background: #fff;
+    margin-bottom: 18px;
+	}
+
+	&--section:last-of-type &--section-text{
+		font-size: 16px;
+	}
+
+	.icon{
+		color: #fff;
+		margin-right: 20px;
+		margin-top: 40px;
+		font-size: 21px;
+	}
+}
+
+
+

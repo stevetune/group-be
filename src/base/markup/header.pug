@@ -1,9 +1,0 @@
-include includes/mixins
-
-header#header
-	block headerBlock
-		#header-lower
-			.l-container.l-flex
-				+headerLogo()
-				+burger()
-				+headerMenu(locals.menuType.style, locals.menuType.hasCloseBtn, locals.menuType.hasPlusMinus)

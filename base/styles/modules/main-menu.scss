@@ -1,0 +1,22 @@
+.main-menu{
+	width: 100%;
+	z-index: 1;
+
+	&--anchor{
+		font-size: 14px;
+		padding: 10px 20px;
+		display: block;
+		color: #777;
+	}
+
+	&--submenu &--anchor{
+		padding: 10px 20px;
+	}
+
+	//for accordion menu
+	&--plus-button{
+		display: none;
+		display: flex;
+    	align-items: center;
+	}
+}
