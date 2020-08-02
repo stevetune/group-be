@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 
-const basePath = `${__dirname}/src/`
+const basePath = `${__dirname}/`
 
 app.use(express.static(`${basePath}/`))
 

@@ -1,0 +1,15 @@
+mixin icon(i_class, href, a_class='', text='')
+	.icon
+		a(href=`${href}`, class=`icon--anchor ${a_class}`)
+			i(class=`icon--icon ${i_class}`)
+			if text
+				span.icon--text #{text}
+
+
+
+
+
+
+
+
+

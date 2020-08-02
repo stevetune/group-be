@@ -1,0 +1,43 @@
+mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
+	ul.main-menu.is-collapsible.main-menu--menu(data-collapsed='true')
+		if hasCloseBtn
+			li.main-menu--close-btn
+				.x-button
+		if locals.header_menu
+			for item in locals.header_menu
+				li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
+					a.main-menu--anchor(href=`${item.href}`)
+						| !{item.title}
+						if item.submenu && hasPlusMinus
+							+plusMinus()
+					if item.submenu
+						ul.main-menu--submenu(data-collapsed='true')
+							for subitem in item.submenu
+								li.main-menu--item.main-menu--item-sub
+									a.main-menu--anchor.main-menu--anchor-sub(href=`${subitem.href}`)
+										| #{subitem.title}
+
+	
+	include ./../../markup/includes/mobile-menus/main.pug
+
+	//Slide Left 
+	if mobileMenuType == 1	
+		include ./../../markup/includes/mobile-menus/slide-left.pug
+
+	//Slide Right 
+	if mobileMenuType == 5	
+		include ./../../markup/includes/mobile-menus/slide-right.pug
+			
+	//Slide Down and Accordion
+	if mobileMenuType == 3 || mobileMenuType == 4 	
+		include ./../../markup/includes/menu-sections.pug
+
+	//Slide Down
+	if mobileMenuType == 3
+		include ./../../markup/includes/mobile-menus/expand-down.pug
+			
+	//Accordion
+	if mobileMenuType == 4
+		include ./../../markup/includes/mobile-menus/accordion.pug
+
+

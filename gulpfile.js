@@ -1,56 +1,65 @@
-let gulp = require("gulp"),
-	sass = require("gulp-sass"),
-	pug = require("gulp-pug"),
-	sassGlob = require("gulp-sass-glob"),
-	livereload = require("gulp-livereload"),
-	cleanCss = require("gulp-clean-css"),
+let gulp = require('gulp'),
+	//utils
+	livereload = require('gulp-livereload'),
 	sourcemaps = require('gulp-sourcemaps'),
 	wait = require('gulp-wait'),
-	rename = require("gulp-rename"),
+	rename = require('gulp-rename'),
 	concat = require('gulp-concat'),
-	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
 	streamQueue = require('streamqueue')
+	//sass
+	sass = require('gulp-sass'),
+	sassGlob = require('gulp-sass-glob'),
+	cleanCss = require('gulp-clean-css'),
+	injectScss = require('gulp-inject-scss'),
+	//pug
+	pug = require('gulp-pug'),
+	//enums
+	{ BE_Type, Menu_Style } = require('./base/enum_types.js')
 
 
 const compileSass = (done) => {
 
-	console.log('compiling sass')
-
 	//delete old config file and add new one
-	delete require.cache[require.resolve('./src/cover/config.js')]
-	const { config } = require('./src/cover/config.js')
+	delete require.cache[require.resolve('./cover/config.js')]
+	const { config } = require('./cover/config.js')
 
 	Object.keys(config.properties).forEach(propertyName => {
 
-		let parentDir = config.properties[propertyName].style.split("_")[0]
 		const srcFiles = _getStyleSrcFiles(propertyName, config)
 
-		const prodSass = gulp.src(srcFiles)
-			.pipe(sassGlob())
-			.pipe(sass({outputStyle: "compressed"}))
-			.pipe(cleanCss())
-			.pipe(concat('prod.css'))
-			
+		console.log('here', config.properties[propertyName].be)
+		const beOptions = config.properties[propertyName].be
 
-			prodSass.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+		const prodSass = gulp.src(srcFiles)
+			.pipe( injectScss(beOptions) )
+			.pipe( sassGlob() )
+			.pipe( sass({outputStyle: 'compressed'}) )
+			.pipe( cleanCss() )
+			.pipe( concat('prod.css') )
+			
+			prodSass.pipe(gulp.dest(`properties/${propertyName}/output`))
+
+			console.log('be options', beOptions)
 
 			//with src maps
-			const devOnlySass = gulp.src('src/cover/dev-only.scss')
-					.pipe( sourcemaps.init() )
-					.pipe( sass({outputStyle: "compressed"}) )
-				 	.pipe( cleanCss() )
-					.pipe( sourcemaps.write() )
+			const devOnlySass = gulp.src('cover/dev-only.scss')
+				.pipe( injectScss(beOptions) )
+				.pipe( sourcemaps.init() )
+				.pipe( sass({outputStyle: 'compressed'}) )
+			 	.pipe( cleanCss() )
+				.pipe( sourcemaps.write() )
 
 			const devSass = gulp.src(srcFiles)
-					.pipe(sourcemaps.init())
-					.pipe(sassGlob())
-					.pipe(sass({outputStyle: "compressed"}))
-				 	.pipe(cleanCss())
-					.pipe(sourcemaps.write())
+				.pipe( injectScss(beOptions) )
+				.pipe( sourcemaps.init() )
+				.pipe( sassGlob() )
+				.pipe( sass({outputStyle: 'compressed'}) )
+			 	.pipe( cleanCss() )
+				.pipe( sourcemaps.write() )
 
 			streamQueue({ objectMode: true },devSass, devOnlySass)
 			.pipe(concat('dev.css'))
-			.pipe(gulp.dest(`src/properties/${propertyName}/output`))
+			.pipe(gulp.dest(`properties/${propertyName}/output`))
 
 			.pipe(wait(400))
 			.pipe(livereload())
@@ -62,31 +71,31 @@ const compileSass = (done) => {
 const compilePug = (done) => {
 
 	//delete old config file and add new one
-	delete require.cache[require.resolve('./src/cover/config.js')]
-	const { config } = require('./src/cover/config.js')
+	delete require.cache[require.resolve('./cover/config.js')]
+	const { config } = require('./cover/config.js')
 
 	Object.keys(config.properties).forEach(propertyName => {
 
 		const pugSrcFiles = _getPugSrcFiles(propertyName, config)
-		console.log(pugSrcFiles)
+		
+		let varsFile = _refreshVarsFile(propertyName, config)
+		console.log(varsFile)
 
-
-		//delete old vars file and add new one
-		let varsFilePath = `./src/cover/${config.properties[propertyName].vars}.js`
-		delete require.cache[require.resolve(varsFilePath)]
-		let varsFile = require(varsFilePath)
 
 		gulp.src(pugSrcFiles)
-			.pipe(pug({locals: Object.assign(varsFile,config.properties[propertyName]), pretty: true}))
+			.pipe( pug({
+					locals: Object.assign(varsFile, config.properties[propertyName]), 
+					pretty: true
+			}))
 			.pipe(rename(path => {
 				path.basename = path.basename.includes('header') ? 'header' : path.basename
 				path.basename = path.basename.includes('footer') ? 'footer' : path.basename
 				path.basename = path.basename.includes('index') ? 'index' : path.basename				
 			}))
 			.pipe(gulp.dest(file => {
-				return file.relative.includes("index") ? 
-					`./src/properties/${propertyName}` : 
-					`./src/properties/${propertyName}/output/`
+				return file.relative.includes('index') ? 
+					`./properties/${propertyName}` : 
+					`./properties/${propertyName}/output/`
 			}))
 			.pipe(wait(400))
 			.pipe(livereload())
@@ -95,76 +104,85 @@ const compilePug = (done) => {
 	done()
 }
 
-const compileHandlebars = (done) => {
-	console.log('compiling handlebars')
-	done()
+function _refreshVarsFile(propertyName, config){
+	let varsFilePath =`./cover/${config.properties[propertyName].files.data}`
+	delete require.cache[require.resolve(varsFilePath)]
+	return require(varsFilePath)
 }
 
-const _getStyleSrcFiles = (propertyName, config) => {
+
+function _getStyleSrcFiles(propertyName, config) {
 
 		let extras = []
 
 		//menu types
-		switch(config.properties[propertyName].menuType.style){
-			case Menu_Style.SLIDELEFT:
-				extras.push('src/base/styles/modules/mobile-menus/slide-left.scss')
-				break
+		if(config.properties[propertyName].menuType)
+		{
+			switch(config.properties[propertyName].menu.type){
+				case Menu_Style.SLIDELEFT:
+					extras.push('./base/styles/modules/mobile-menus/slide-left.scss')
+					break
 
-			case Menu_Style.SLIDERIGHT:
-				extras.push('src/base/styles/modules/mobile-menus/slide-right.scss')
-				break
+				case Menu_Style.SLIDERIGHT:
+					extras.push('./base/styles/modules/mobile-menus/slide-right.scss')
+					break
 
-			case Menu_Style.PAGES:
+				case Menu_Style.PAGES:
 
-				break 
+					break 
 
-			case Menu_Style.SLIDEDOWN:
-				extras.push('src/base/styles/modules/mobile-menus/slide-down.scss')
-				break 
+				case Menu_Style.SLIDEDOWN:
+					extras.push('./base/styles/modules/mobile-menus/slide-down.scss')
+					break 
 
-			case Menu_Style.ACCORDION:
-				extras.push('src/base/styles/modules/mobile-menus/accordion.scss')
-				extras.push('src/base/styles/modules/plus-minus.scss')
-				break		
+				case Menu_Style.ACCORDION:
+					extras.push('./base/styles/modules/mobile-menus/accordion.scss')
+					extras.push('./base/styles/modules/plus-minus.scss')
+					break		
+
+				case Menu_Style.CLASSIC_SMART:
+
+					break
+			}
 		}
 
 		//BE Type
-		switch(config.properties[propertyName].type){
+		switch(config.properties[propertyName].be.type){
 			case BE_Type.SMART:
-
+				extras.push('./base/styles/themes/smart.scss')
 				break
 
 			case BE_Type.ADVANCED:
-				extras.push('src/base/styles/themes/advanced.scss')
+				extras.push('./base/styles/themes/advanced.scss')
 				break
 		}
 
+		extras.push(`./cover/${config.properties[propertyName].files.stylesheet}`)
 
-		return [].concat([`src/cover/${config.properties[propertyName].style}.scss`], extras)
+		return extras
 }
 
-const _getPugSrcFiles = (propertyName, config) => {
+function _getPugSrcFiles(propertyName, config) {
 	return [
-			`./src/cover/${config.properties[propertyName].header}.pug`,
-			`./src/cover/${config.properties[propertyName].footer}.pug`,
-			`./src/cover/${config.properties[propertyName].index}.pug`
+			`./cover/${config.properties[propertyName].files.header}`,
+			`./cover/${config.properties[propertyName].files.footer}`,
+			'./cover/cover_index.pug',
 		]
 }
 
 const watchFunc = function(done)
 {
 	livereload.listen()
-	gulp.watch(["src/**/*.pug", "src/**/*.js"], compilePug)
-	gulp.watch(["src/**/*.hbs", "src/**/*.js"], compileHandlebars)
-	gulp.watch(["src/**/*.scss", "src/cover/config.js"], compileSass)
+	gulp.watch(['./**/*.pug', './**/*.js'], compilePug)
+	gulp.watch(['./**/*.scss', './cover/config.js'], compileSass)
 
 	done()
 }
 
-exports.watch = gulp.series(compileSass, compilePug, compileHandlebars, watchFunc)
+exports.watch = gulp.series(compileSass, compilePug, watchFunc)
 exports.pug = compilePug
 exports.sass = compileSass
-exports.handlebars = compileHandlebars
+exports.build = gulp.series(compileSass, compilePug)
 
 
 
