@@ -1,6 +1,77 @@
-$r: 223;
-$g: 166;
-$b: 113;
+@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+
+/* Layout */
+
+.l-container{
+    max-width: #{$container_width};
+    margin: 0 auto;
+    padding: 0 94px;
+}
+
+
+/* Modules */
+
+.burger{
+    display: none;
+}
+
+
+.main-menu{
+    background-color:unset;
+    position:unset;
+    align-self: flex-end;
+    padding-bottom: 14px;
+
+    &--menu{
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    &--anchor{
+        color: #777;
+        padding: 0px 30px 0px 0px;
+    }
+
+    &--submenu &--anchor{
+        padding: 10px 20px 0;
+    }
+
+    &--submenu &--item:last-child &--anchor{
+        padding-bottom: 10px;
+    }
+
+    &--submenu{
+        display: none;
+        position: absolute;
+        background-color: #333;
+    }
+
+    &--submenu &--anchor{
+        color: #fff;
+    }
+
+    &--item:hover &--submenu{
+        display: block;
+    }
+}
+
+
+.x-button{
+    display: none;
+}
+
+
+/* Layout */
+$mobile-width: 0px;
+
+
+/* CSS for the Booking Engine itself */   
+$r: 35;
+$g: 137;
+$b: 201;
 
 @function get-rgba($r, $g, $b, $a){
     @return rgba($r, $g, $b, $a)
@@ -16,7 +87,7 @@ $b: 113;
 }
 
 @mixin borderColor($a){
-    border-color: get-rgba($r,$g,$b,$a)
+    border-color: get-rgba($r,$g,$b,$a) !important;
 }
 
 

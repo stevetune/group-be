@@ -1,4 +1,84 @@
-@import '../config';
+
+/* Config */
+
+@mixin desktop {
+    @media (min-width: #{$mobile_width}){
+        @content;
+    }
+}
+
+/* Layout */
+
+.l-container{
+
+    @include desktop{
+        max-width: #{$mobile_width};
+        margin: 0 auto;
+        padding: 0 94px;
+    }
+}
+
+
+/* Modules */
+
+.burger{
+    @include desktop{
+        display: none;
+    }
+}
+
+
+.main-menu{
+    @include desktop{
+        background-color:unset;
+        position:unset;
+        align-self: flex-end;
+        padding-bottom: 14px;
+
+        &--menu{
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        &--anchor{
+            color: #777;
+            padding: 0px 30px 0px 0px;
+        }
+
+        &--submenu &--anchor{
+            padding: 10px 20px 0;
+        }
+
+        &--submenu &--item:last-child &--anchor{
+            padding-bottom: 10px;
+        }
+
+        &--submenu{
+            display: none;
+            position: absolute;
+            background-color: #333;
+        }
+
+        &--submenu &--anchor{
+            color: #fff;
+        }
+
+        &--item:hover &--submenu{
+            display: block;
+        }
+    }
+}
+
+
+.x-button{
+    @include desktop{
+        display: none;
+    }
+}
+
+
+
 
 #header{display: block}
 #footer{position: static}
@@ -8,6 +88,8 @@
 #template_footer{margin-top: auto;}
 .destra {height: 0;}
 
+
+/* CSS for the Booking Engine itself */   
 @function get-rgba($rgb_red, $rgb_green, $rgb_blue, $alpha){
     @return rgba($rgb_red, $rgb_green, $rgb_blue, $alpha)
 }

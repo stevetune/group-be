@@ -25,8 +25,4 @@
 	&::after{
 		transform: rotate(-45deg);
 	}
-
-	@include desktop{
-		display: none;
-	}
 }

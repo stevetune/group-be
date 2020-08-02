@@ -22,8 +22,4 @@
 	&:hover .burger--slice{
 		border-color: #f00;
 	}
-
-	@include desktop{
-		display: none;
-	}
 }

@@ -8,7 +8,8 @@ const Menu_Style = {
 	PAGES: 2, 
 	SLIDEDOWN: 3, 
 	ACCORDION: 4,
-	SLIDERIGHT: 5 
+	SLIDERIGHT: 5,
+	CLASSIC_SMART: 6
 }
 
 module.exports = { BE_Type, Menu_Style }
