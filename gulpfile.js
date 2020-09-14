@@ -182,16 +182,14 @@ const watchFunc = function(done)
 {
 	livereload.listen()
 	gulp.watch(["src/**/*.pug", "src/**/*.js"], compilePug)
-	gulp.watch(["src/**/*.hbs", "src/**/*.js"], compileHandlebars)
 	gulp.watch(["src/**/*.scss", "src/cover/config.js"], compileSass)
 
 	done()
 }
 
-exports.watch = gulp.series(compileSass, compilePug, compileHandlebars, watchFunc)
+exports.watch = gulp.series(compileSass, compilePug, watchFunc)
 exports.pug = compilePug
 exports.sass = compileSass
-exports.handlebars = compileHandlebars
 
 
 

@@ -12,4 +12,4 @@ app.get('/', (req,res) => {
 });
 
 
-app.listen(5000, () => console.log('running'));
+app.listen(5000, () => console.info('\r\nNow running at http://10.0.0.1:5000/properties/generic-place\r\n'));
