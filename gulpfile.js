@@ -50,8 +50,6 @@ const config = {
 
 const compileSass = (done) => {
 
-	console.log('compiling sass')
-
 	//delete old config file and add new one
 	// delete require.cache[require.resolve('./src/cover/config.js')]
 	// const { config } = require('./src/cover/config.js')
@@ -104,8 +102,6 @@ const compilePug = (done) => {
 	Object.keys(config.properties).forEach(propertyName => {
 
 		const pugSrcFiles = _getPugSrcFiles(propertyName, config)
-		console.log(pugSrcFiles)
-
 
 		//delete old vars file and add new one
 		let varsFilePath = `./src/cover/${config.properties[propertyName].vars}.js`
@@ -128,11 +124,6 @@ const compilePug = (done) => {
 			.pipe(livereload())
 	})
 
-	done()
-}
-
-const compileHandlebars = (done) => {
-	console.log('compiling handlebars')
 	done()
 }
 
