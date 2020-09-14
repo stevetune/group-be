@@ -8,8 +8,44 @@ let gulp = require("gulp"),
 	wait = require('gulp-wait'),
 	rename = require("gulp-rename"),
 	concat = require('gulp-concat'),
-	{ BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
+	// { BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
 	streamQueue = require('streamqueue')
+
+
+const BE_Type = {
+	ADVANCED: 1,
+	SMART: 2
+}
+
+const Menu_Style = {
+	SLIDELEFT: 1, 
+	PAGES: 2, 
+	SLIDEDOWN: 3, 
+	ACCORDION: 4,
+	SLIDERIGHT: 5 
+}
+
+const config = {
+	production: false,
+	properties : {
+		"generic-place": {
+			//type: BE_Type.ADVANCED,
+			type: BE_Type.SMART,
+			style: "style1",
+			header: "header1",
+			footer: "footer1",
+			index: "index1",
+			vars: "vars1",
+			menuType: {
+				style: null,
+				//style: Menu_Style.SLIDELEFT,
+				hasCloseBtn: true,
+				hasPlusMinus: false
+			}
+		},
+		//...
+	}
+}
 
 
 const compileSass = (done) => {
@@ -17,8 +53,8 @@ const compileSass = (done) => {
 	console.log('compiling sass')
 
 	//delete old config file and add new one
-	delete require.cache[require.resolve('./src/cover/config.js')]
-	const { config } = require('./src/cover/config.js')
+	// delete require.cache[require.resolve('./src/cover/config.js')]
+	// const { config } = require('./src/cover/config.js')
 
 	Object.keys(config.properties).forEach(propertyName => {
 
