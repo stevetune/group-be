@@ -9,7 +9,7 @@ include mixins
 						h2.footer-sections--section-header !{object.value} 
 					
 					if object.type == 'text'
-						.footer-sections--section-text #{object.value}
+						.footer-sections--section-text !{object.value}
 					
 					if object.type == 'html'
 						.footer-sections--section-text.footer-sections--section-html !{object.value}
