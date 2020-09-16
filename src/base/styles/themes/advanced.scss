@@ -1,5 +1,10 @@
 @import '../config';
 
+$rgbRed: 15;
+$rgbGreen: 122;
+$rgbBlue: 190;
+
+
 #header{display: block}
 #footer{position: static}
 #wrapper .container{padding-bottom: 0 !important; margin-bottom: 50px !important;}
@@ -8,23 +13,25 @@
 #template_footer{margin-top: auto;}
 .destra {height: 0;}
 
-@function get-rgba($rgb_red, $rgb_green, $rgb_blue, $alpha){
-    @return rgba($rgb_red, $rgb_green, $rgb_blue, $alpha)
+@function get-rgba(){
+    @return rgba($rgbRed, $rgbGreen, $rgbBlue, 1)
 }
 
 @mixin bgColor($alpha){
-    background: get-rgba($rgb_red,$rgb_green,$rgb_blue,$alpha) !important
+    background: get-rgba() !important
 }
 
 @mixin color($alpha){
-    color: get-rgba($rgb_red,$rgb_green,$rgb_blue,$alpha)
+    color: get-rgba()
 }
 
 #cont_aggiungi_camere a, .nomecamera, .titolo_eta_bambini, .link_scheda .label_text, .ea-js-a-staylength .row-link .fa, #dk_pulsante_cancella_modifica, .room_config .label .fa, #dettagli .accordion, .dettagliTariffa, #riepilogo h2, .accordion, .container_info h2, #summary-box .titolo_tabella, .ricerca_mobile a {
     @include color(1)
 }
 
-#steps ul li.selected, #steps ul li.active, #steps ul li.active:hover, #steps li.active, #steps ul li.active {
+#steps ul li.selected, #steps ul li.active, 
+#steps ul li.active:hover, #steps li.active, 
+#steps ul li.active {
     @include bgColor(1)
 }
 
