@@ -1,5 +1,5 @@
 mixin icon(i_class, o_class, href, a_class='', text='')
-	.icon(class=`${o_class}`)
+	.icon(class=`${o_class ? o_class : ''}`)
 		if href
 			a(href=`${href}`, class=`icon--anchor ${a_class}`)
 				i(class=`icon--icon ${i_class}`)
@@ -22,16 +22,19 @@ mixin headerLogo()
 			a.header-logo--link(href=`${website_url}`)
 				img.header-logo--image(src=`${logo_url}`)
 
-mixin burger()
+mixin burger(text = '')
 	.burger
-		.burger--slice
-		.burger--slice.burger--middle-slice
-		.burger--slice
+		.burger--slices
+			.burger--slice
+			.burger--slice.burger--middle-slice
+			.burger--slice
+		if text
+			.burger--text #{text}
 
 mixin plusMinus()
 	.plus-minus
 
-mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
+mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus, subsAutoExpanded = 'false')
 	nav.main-menu.is-collapsible
 		ul.main-menu--menu(data-collapsed='true')
 			if hasCloseBtn
@@ -39,7 +42,7 @@ mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
 					.x-button
 			if locals.menu
 				for item in locals.menu
-					li.main-menu--item.main-menu--item-top(class=item.submenu ? "has-submenu": "")
+					li.main-menu--item.main-menu--item-top(class=item.submenu ? 'has-submenu': '')
 						a.main-menu--anchor(href=`${item.href}`)
 							| !{item.title}
 							if item.submenu && hasPlusMinus
@@ -52,26 +55,29 @@ mixin headerMenu(mobileMenuType, hasCloseBtn, hasPlusMinus)
 											| #{subitem.title}
 
 	
-	include ./../../markup/includes/javascript/mobile-menus/main.pug
+	include ./../includes/javascript/mobile-menus/main.pug
 
 	//Slide Left 
 	if mobileMenuType == 1	
-		include ./../../markup/includes/javascript/mobile-menus/slide-left.pug
+		include ./../includes/javascript/mobile-menus/slide-left.pug
 
 	//Slide Right 
 	if mobileMenuType == 5	
-		include ./../../markup/includes/javascript/mobile-menus/slide-right.pug
+		include ./../includes/javascript/mobile-menus/slide-right.pug
 			
 	//Slide Down and Accordion
 	if mobileMenuType == 3 || mobileMenuType == 4 	
-		include ./../../markup/includes/javascript/mobile-menus/lib/menu-sections.pug
+		include ./../includes/javascript/mobile-menus/lib/menu-sections.pug
 
 	//Slide Down
 	if mobileMenuType == 3
-		include ./../../markup/includes/javascript/mobile-menus/expand-down.pug
+		include ./../includes/javascript/mobile-menus/expand-down.pug
 			
 	//Accordion
 	if mobileMenuType == 4
-		include ./../../markup/includes/javascript/mobile-menus/accordion.pug
+		if subsAutoExpanded
+			include ./../includes/javascript/mobile-menus/accordion-subs-auto-expanded.pug
+		else
+			include ./../includes/javascript/mobile-menus/accordion.pug
 
 

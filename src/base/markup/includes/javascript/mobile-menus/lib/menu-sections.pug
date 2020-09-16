@@ -1,6 +1,6 @@
 script.
 
-  const collapseMenuSection = (element, isInner = false) => {
+  function collapseMenuSection(element, isInner = false){
       let menuSectionHeight = element.scrollHeight;
       let elementTransition = element.style.transition;
       element.style.transition = '';
@@ -22,7 +22,7 @@ script.
     element.setAttribute('data-collapsed', 'true');
   }
 
-  const expandMenuSection = (element, isInner = false) => {
+  function expandMenuSection(element, isInner = false) {
       
       let menuSectionHeight = element.scrollHeight;
       element.style.height = `${menuSectionHeight}px`;
@@ -35,10 +35,9 @@ script.
       element.setAttribute('data-collapsed', 'false');
   }
 
-  const expandOrCollapseMenuSection = (element, isInner) => {
+  function expandOrCollapseMenuSection(element, isInner) {
     let isCollapsed = element.getAttribute('data-collapsed') === 'true';
-    console.log(isCollapsed)
-
+   
     if(isCollapsed) { 
       expandMenuSection(element, isInner)
       element.setAttribute('data-collapsed', 'false') 
@@ -47,13 +46,41 @@ script.
     }
   }
 
+  function expandOrCollapseEntireMenu() {
+    let menu = document.querySelector('.main-menu')
+    let isCollapsed = menu.getAttribute('data-collapsed') === 'true';
+    submenus = document.querySelectorAll('.main-menu--submenu')
+
+    if(isCollapsed) 
+    {   
+      let totalSubmenuHeight = 0
+      submenus.forEach(submenu => {
+        submenu.style.height = `${submenu.scrollHeight}px`
+        totalSubmenuHeight += submenu.scrollHeight
+      })
+
+      menu.style.height = `${menu.scrollHeight + totalSubmenuHeight}px`
+
+      menu.setAttribute('data-collapsed', 'false')
+    } 
+    else 
+    {
+      menu.style.height = 0
+      submenus.forEach(submenu => {
+        submenu.style.height = 0
+      })
+
+      menu.setAttribute('data-collapsed', 'true')
+    }
+  }
+
 
   //add/remove on resize
   let menu = document.querySelector('.main-menu.is-collapsible');
   menu.setAttribute('data-collapsed', 'true');
-  menu.style.height =  window.innerWidth > 900 ? 'initial': '0px';
+  menu.style.height =  window.innerWidth > 990 ? 'initial': '0px';
   menu.style.display = 'block';
 
   window.addEventListener('resize', () => {
-    menu.style.height =  window.innerWidth > 900 ? 'initial': '0px';
+    menu.style.height =  window.innerWidth > 990 ? 'initial': '0px';
   })
