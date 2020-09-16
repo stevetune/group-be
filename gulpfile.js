@@ -9,7 +9,8 @@ let gulp = require("gulp"),
 	rename = require("gulp-rename"),
 	concat = require('gulp-concat'),
 	// { BE_Type, Menu_Style } = require('./src/base/enum_types.js'), 
-	streamQueue = require('streamqueue')
+	streamQueue = require('streamqueue'),
+	injectScss = require('gulp-inject-scss')
 
 
 const BE_Type = {
@@ -30,23 +31,33 @@ const config = {
 	properties : {
 		"generic-place": {
 			//type: BE_Type.ADVANCED,
-			type: BE_Type.SMART,
+			type: BE_Type.ADVANCED,
 			style: "style1",
 			header: "header1",
 			footer: "footer1",
 			index: "index1",
 			vars: "vars1",
 			menuType: {
-				style: null,
-				//style: Menu_Style.SLIDELEFT,
-				hasCloseBtn: true,
-				hasPlusMinus: false
+				//style: null,
+				style: Menu_Style.ACCORDION,
+				hasCloseBtn: false,
+				hasPlusMinus: false,
+				subsAutoExpanded: true
 			}
 		},
 		//...
 	}
 }
 
+const sassVars = {
+	containerWidth: '1140px',
+	containerPadding: '15px',
+	mobileWidth: '990px',
+	rgbRed: 15, 
+	rgbGreen: 122, 
+	rgbBlue: 190
+}
+console.log(config.properties['generic-place'])
 
 const compileSass = (done) => {
 
@@ -59,9 +70,12 @@ const compileSass = (done) => {
 		let parentDir = config.properties[propertyName].style.split("_")[0]
 		const srcFiles = _getStyleSrcFiles(propertyName, config)
 
+		console.log('\r\n' + srcFiles + '\r\n')
+
 		const prodSass = gulp.src(srcFiles)
+			.pipe(injectScss(sassVars))
 			.pipe(sassGlob())
-			.pipe(sass({outputStyle: "compressed"}))
+			.pipe(sass({outputStyle: 'compressed'}))
 			.pipe(cleanCss())
 			.pipe(concat('prod.css'))
 			
@@ -70,12 +84,14 @@ const compileSass = (done) => {
 
 			//with src maps
 			const devOnlySass = gulp.src('src/cover/dev-only.scss')
+					.pipe(injectScss(sassVars))
 					.pipe( sourcemaps.init() )
 					.pipe( sass({outputStyle: "compressed"}) )
 				 	.pipe( cleanCss() )
 					.pipe( sourcemaps.write() )
 
 			const devSass = gulp.src(srcFiles)
+					.pipe(injectScss(sassVars))
 					.pipe(sourcemaps.init())
 					.pipe(sassGlob())
 					.pipe(sass({outputStyle: "compressed"}))
@@ -95,9 +111,6 @@ const compileSass = (done) => {
 
 const compilePug = (done) => {
 
-	//delete old config file and add new one
-	delete require.cache[require.resolve('./src/cover/config.js')]
-	const { config } = require('./src/cover/config.js')
 
 	Object.keys(config.properties).forEach(propertyName => {
 
