@@ -32,9 +32,9 @@
 	padding: 0 20px;
 
 	@include desktop{
-		max-width: $container-width;
+		max-width: #{$containerWidth};
 		margin: 0 auto;
-		padding: 0 94px;
+		padding: 0 #{$containerPadding};
 	}
 }
 

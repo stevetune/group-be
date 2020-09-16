@@ -1,27 +1,21 @@
-$white: rgba(255,255,255,.8);
-$lightblue: #4593ba;
-$brown: #3c342f;
 
 /* booking engine container colors */
-$rgb_red: 27;
-$rgb_green: 164;
-$rgb_blue: 127;
 
 @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
 
-$container-width: 1290px;
 
-$mobile-width: 900px;
-// $tablet-width: 1200px;
-
-@mixin desktop {
-	@media (min-width: #{$mobile-width}){
+@mixin desktop 
+{
+	@media (min-width: #{$mobileWidth})
+	{
 		@content;
 	}
 }
 
-@mixin customQuery($min-width) {
-    @media (min-width: $min-width){
+@mixin customQuery($minWidth) 
+{
+    @media (min-width: $minWidth)
+    {
         @content;
     }
 }
