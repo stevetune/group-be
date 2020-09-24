@@ -1,0 +1,18 @@
+script.
+
+	console.log('accordion activated SAE')
+
+	document.querySelector('.burger').addEventListener('click', (e) => {
+	  	//- //expandOrCollapseMenuSection(document.querySelector('.main-menu'))
+	  	//- expandOrCollapseMenuSection(document.querySelector('.main-menu--submenu'), true)
+	  	expandOrCollapseEntireMenu()
+	});
+
+	//- document.querySelectorAll('.plus-minus').forEach(el => { 
+	//-   el.addEventListener('click', (e) => {
+	//-   	e.preventDefault()
+	//-   	let subMenu = el.closest('.main-menu--item-top').querySelector('.main-menu--submenu')
+	//-     expandOrCollapseMenuSection(subMenu, true)
+	//-   })
+	//- })
+
