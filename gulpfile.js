@@ -57,7 +57,6 @@ const sassVars = {
 	rgbGreen: 122, 
 	rgbBlue: 190
 }
-console.log(config.properties['generic-place'])
 
 const compileSass = (done) => {
 
@@ -69,8 +68,6 @@ const compileSass = (done) => {
 
 		let parentDir = config.properties[propertyName].style.split("_")[0]
 		const srcFiles = _getStyleSrcFiles(propertyName, config)
-
-		console.log('\r\n' + srcFiles + '\r\n')
 
 		const prodSass = gulp.src(srcFiles)
 			.pipe(injectScss(sassVars))
