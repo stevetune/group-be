@@ -1,13 +1,12 @@
-include includes/mixins
+include mixins
 
 footer#footer
 	#footer-upper
 		block footerUpper
 			.l-container
-				include includes/footer_sections
-			
+				+footerSection(locals.footer_section_1)
 
 	#footer-lower
 		block footerLower
 			.l-container
-				include includes/footer_copyright
+				+footerSection(locals.footer_section_2)
