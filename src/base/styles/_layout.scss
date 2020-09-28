@@ -1,5 +1,4 @@
 
-
 #header{
 	background-color: #fff;
 }
@@ -17,6 +16,11 @@
     flex-direction: column;
     align-items: center;
     z-index: 0;
+}
+
+#footer-upper, #footer-lower
+{
+	width: 100%;
 }
 
 #header, #footer{

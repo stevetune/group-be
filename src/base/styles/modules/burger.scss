@@ -1,21 +1,20 @@
 .burger{
+  display: flex;
+  align-items: center;
+
+  &--slices{
     display: flex;
+    flex-flow: column;
     align-items: center;
-
-
-    &--slices{
-	    display: flex;
-	    flex-flow: column;
-	    align-items: center;
-	    justify-content: center;
-	    box-sizing: border-box;
-	    cursor: pointer;
-	  }
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
 
 	&--slice{
 		width: 24px;
-	    height: 1px;
-	    background-color: #333;
+	  height: 1px;
+	  background-color: #333;
 	}
 
 	&--middle-slice{
