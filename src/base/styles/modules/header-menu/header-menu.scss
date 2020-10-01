@@ -1,0 +1,92 @@
+@import './../../config';
+
+.header-menu
+{
+	position:absolute;
+	left: 0;
+
+	width: 100%;
+	background-color: #eee;
+	z-index: 1;
+	padding: 10px 0;
+
+	&--menu-anchor{
+		font-size: 14px;
+		padding: 10px 20px;
+		display: block;
+		color: inherit;
+	}
+
+	&--submenu-anchor
+	{
+		padding-left: 40px;
+	}
+
+	&--menu-anchor:hover
+	{
+		background-color: #bbb;
+	}
+
+	&--plus-button-container
+	{
+		display: flex;
+		align-items: stretch;
+	}
+
+	&--close-button
+	{
+		padding-bottom: 12px;
+	}
+
+	&--plus-button-container &--menu-anchor
+	{
+		width: 90%;
+	}
+
+	&--plus-button
+	{
+		margin-left: auto;
+	}
+	
+	@include desktop
+	{
+		background-color: unset !important;
+		position: unset !important;
+		align-self: middle;
+
+		&--menu{
+			display: flex;
+			justify-content: flex-end;
+			flex-wrap: wrap;
+		}
+
+		&--anchor{
+			color: #777;
+			margin-right: 8px;
+		}
+
+		&--submenu-anchor{
+			padding: 10px 20px 0;
+			color: #fff;
+		}
+
+		&--submenu-item:last-child &--submenu-anchor{
+			padding-bottom: 10px;
+		}
+
+		&--submenu{
+			display: none;
+			position: absolute;
+			background-color: #333;
+		}
+
+		&--item:hover &--submenu{
+			display: block;
+		}
+
+		&--close-button
+		{
+			display: none;
+		}
+	}
+}

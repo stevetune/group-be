@@ -1,7 +1,7 @@
-@import './../../config';
+@import './../../../../config';
 
 .main-menu{
-	background-color: #eee;
+	background-color: #fff;
 	height: 100vh;
 	width: 100%;
 	box-sizing: border-box;
@@ -42,15 +42,14 @@
 	}
 
 	&--anchor{
-		color: #fff;
+		color: inherit;
 		padding-bottom: 15px;
-		display: inline-block;
 		white-space: nowrap;
 		font: inherit;
 	}
 
 	&--anchor:hover{
-		color: #fff;
+		color: inherit;
 	}
 
 	&--ca

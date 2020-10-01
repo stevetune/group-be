@@ -1,11 +1,17 @@
+@import './../../config';
 
-.plus-minus{
-	--psSize: 10px;
-	--psStrokeWidth:2px;
-	--psColor: #fff;
+
+.plus-minus
+{
+	--psSize: 11px;
+	--psStrokeWidth: 1px;
+	--psColor: #000;
+
+  display: block;
   width:var(--psSize);
   height:var(--psSize);
   position:relative;
+  float: right;
   
   &::before,&::after{
     content:'';
@@ -27,6 +33,11 @@
     width:var(--psSize);
      height:var(--psStrokeWidth);
      bottom: calc(50% - #{var(--psStrokeWidth) / 2});
+  }
+
+  @include desktop
+  {
+    display: none;
   }
 }
 

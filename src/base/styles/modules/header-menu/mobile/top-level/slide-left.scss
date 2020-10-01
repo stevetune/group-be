@@ -1,21 +1,19 @@
-@import './../../config';
-
-body{
-	overflow-x: hidden;
-	background-color: red;
-}
+@import './../../../../config';
 
 .main-menu{
-	background-color: #eee;
+	background-color: #fff;
 	height: 100vh;
 	width: 100%;
 	box-sizing: border-box;
+	position:relative;
 	top: 0;
-	margin-left: 100vh;
+	left: 0;
 	overflow: hidden;
 	position:absolute;
 	z-index: 2;    
-	transition: margin-left .6s cubic-bezier(.55,0,.1,1);
+
+	margin-left: -100vw;
+	transition: margin-left .2s cubic-bezier(.55,0,.1,1);
 
 	&.is-visible{
 		margin-left: 0;
@@ -33,8 +31,8 @@ body{
 		margin-top:14px;
 	}
 
-	&.is-show-left .main-menu--menu{
-		margin-left: 100%;
+	&.is-show-right .main-menu--menu{
+		margin-left: -100%;
 	}
 
 	&--submenu{
@@ -44,15 +42,14 @@ body{
 	}
 
 	&--anchor{
-		color: #fff;
+		color: inherit;
 		padding-bottom: 15px;
-		display: inline-block;
 		white-space: nowrap;
 		font: inherit;
 	}
 
 	&--anchor:hover{
-		color: #fff;
+		color: inherit;
 	}
 
 	&--ca

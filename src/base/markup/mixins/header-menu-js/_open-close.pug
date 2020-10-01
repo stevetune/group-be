@@ -1,8 +1,7 @@
 script.
-
-	const xBtn = document.querySelector(".x-button")
-	if(xBtn){
-		document.querySelector(".x-button").onclick = () => {
+	const closeBtn = document.querySelector(".close-button")
+	if(closeBtn){
+		closeBtn.onclick = () => {
 			document.querySelector(".main-menu").classList.remove("is-visible")
 			document.body.classList.remove("is-not-scrollable")
 		}

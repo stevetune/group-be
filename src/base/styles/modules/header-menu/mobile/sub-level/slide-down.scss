@@ -1,17 +1,18 @@
-@import './../../config';
+@import './../../../../config';
 
-.main-menu{
+.header-menu-sub-slide-down
+{
     height: 0;
 	overflow:hidden;
     transition:height 0.3s ease-out;
     height:auto;
-    display: none;
 
     &--submenu{
     	margin-left: 30px;
     }
 
-    @include desktop{
+    @include desktop
+    {
 		&--submenu{
     		margin-left: 0px;
     	}    	

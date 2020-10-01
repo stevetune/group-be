@@ -1,0 +1,36 @@
+.plus-button
+{
+	--pbSize: 11px;
+	--pbStrokeWidth: 1px;
+	--pbColor: #000;
+	padding: 10px;
+	cursor: pointer;
+
+	&--box
+	{			
+		width: var(--pbSize);
+		height: var(--pbSize);
+		display: flex;
+		align-items:center;
+		justify-content:center;
+		position: relative;
+
+		&::before,&::after{
+			content: '';
+			display:block;
+			background: var(--pbColor);
+			position:absolute;
+		}
+
+		&::before{
+			width: var(--pbStrokeWidth);
+			height: 100%;
+			margin: 0 auto;
+		}
+
+		&::after{
+			height: var(--pbStrokeWidth);
+			width: 100%;
+		}
+	}
+}

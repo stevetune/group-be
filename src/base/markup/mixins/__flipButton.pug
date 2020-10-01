@@ -1,0 +1,6 @@
+mixin flipButton(btnHref, btnText)
+	a.flip-button(href=`${btnHref}`)
+		.flip-button--top
+			| #{btnText}
+		.flip-button--bottom
+			| #{btnText}

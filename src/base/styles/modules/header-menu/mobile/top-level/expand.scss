@@ -1,0 +1,41 @@
+@import './../../../../config';
+@import './slide-down';
+
+.main-menu{
+
+	&--item-top{
+		display: flex;
+		align-items:center;
+	}
+
+	&--item-top.has-submenu{
+		flex-wrap: wrap;
+	}
+
+	&--anchor{
+		display: flex;
+		align-items:center;
+		flex-grow: 1;
+	}
+
+	&--submenu{
+		flex-basis: 100%;
+		height: 0;
+		overflow: hidden;
+	}
+
+	&, &--submenu{
+	  	box-sizing:border-box;
+	    height:0;
+	  	overflow:hidden;
+	  	transition: height .2s ease-in;
+	}
+
+	@include desktop{
+		&--submenu{
+			position: absolute;
+			height: auto;
+			top: 100px;		
+		}
+	}
+}

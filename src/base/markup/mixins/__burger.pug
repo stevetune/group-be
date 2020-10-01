@@ -1,0 +1,8 @@
+mixin burger(text = '')
+	.burger
+		.burger--slices
+			.burger--slice
+			.burger--slice.burger--middle-slice
+			.burger--slice
+		if text
+			.burger--text #{text}
