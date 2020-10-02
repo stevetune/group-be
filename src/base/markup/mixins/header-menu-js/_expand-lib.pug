@@ -1,19 +1,19 @@
 script.
 
-  function collapseMenuSection(element, subAndTopExpand = false)
+  function collapseMenuSection(menu, subAndTopExpand = false)
   {
-      let menuSectionHeight = element.scrollHeight
-      let elementTransition = element.style.transition
-      element.style.transition = ''
+      let menuSectionHeight = menu.scrollHeight
+      let menuTransition = menu.style.transition
+      menu.style.transition = ''
     
       requestAnimationFrame(function()
       {
-          element.style.height = `${menuSectionHeight}px`
-          element.style.transition = elementTransition
+          menu.style.height = `${menuSectionHeight}px`
+          menu.style.transition = menuTransition
 
           requestAnimationFrame(function() 
           {
-            element.style.height = '0px'  
+            menu.style.height = '0px'  
           })
       })
     
@@ -23,35 +23,37 @@ script.
       outerMenu.style.height = `${outerMenu.scrollHeight - menuSectionHeight}px`
     }
     
-    element.setAttribute('data-collapsed', 'true')
+    menu.classList.toggle('is-showing')
   }
 
-  function expandMenuSection(element, subAndTopExpand = false)
+  function expandMenuSection(menu, subAndTopExpand = false)
   {    
-      let menuSectionHeight = element.scrollHeight
-      element.style.height = `${menuSectionHeight}px`
+      let menuSectionHeight = menu.scrollHeight
+      menu.style.height = `${menuSectionHeight}px`
 
       if(subAndTopExpand)
       {
         let outerMenu = document.querySelector('.header-menu')
         outerMenu.style.height = `${outerMenu.scrollHeight + menuSectionHeight}px`
+        outerMenu.classList.toggle('is-showing')
       }
     
-      element.setAttribute('data-collapsed', 'false')
+      menu.classList.toggle('is-showing')
   }
 
-  function expandOrCollapseMenuSection(element, subAndTopExpand = false)
+  function expandOrCollapseMenuSection(menu, subAndTopExpand = false)
   {
-    let isCollapsed = element.getAttribute('data-collapsed') === 'true'
+    let isExpanded = menu.classList.contains('is-showing')
+    console.log(isExpanded)
 
-    if(isCollapsed)
+    if(isExpanded)
     { 
-      expandMenuSection(element, subAndTopExpand)
-      element.setAttribute('data-collapsed', 'false') 
+      collapseMenuSection(menu, subAndTopExpand) 
     }
     else
     {
-      collapseMenuSection(element, subAndTopExpand) 
+      expandMenuSection(menu, subAndTopExpand)
+      //menu.setAttribute('data-collapsed', 'false') 
     }
   }
 
@@ -59,7 +61,7 @@ script.
   {
     let menu = document.querySelector('.header-menu')
     let isCollapsed = menu.getAttribute('data-collapsed') === 'true'
-    submenus = document.querySelectorAll('.header-menu--submenu')
+    submenus = document.querySelectorAll('.header-menu--submenu-list')
 
     if(isCollapsed) 
     {   

@@ -1,0 +1,14 @@
+.header-menu
+{
+	left: 100%;
+
+	&--submenu
+	{
+		left: -200%;
+	}
+
+	&.is-showing &--submenu
+	{
+		left: -100%;
+	}
+}

@@ -64,7 +64,7 @@ const config =
 			menuConfig: 
 			{
 				//SlIDELEFT || SLIDERIGHT || EXPAND || DEFAULT
-				mainStyle: Menu_Style.SLIDERIGHT,
+				mainStyle: Menu_Style.SLIDELEFT,
 				subStyle: Menu_Style.SLIDERIGHT
 			}
 		}
@@ -180,12 +180,12 @@ function _getStyleSrcFiles(property)
 				break;
 
 			case Menu_Style.SLIDELEFT:
-				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left-right.scss')
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-default.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left.scss')
 				break
 
 			case Menu_Style.SLIDERIGHT:
-				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left-right.scss')
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-default.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-right.scss')
 				break
 
@@ -205,13 +205,27 @@ function _getStyleSrcFiles(property)
 				break;
 			
 			case Menu_Style.SLIDELEFT:
-				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left-right.scss')
-				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left.scss')
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-default.scss')
+				if (property.menuConfig.mainStyle === Menu_Style.SLIDERIGHT)
+				{
+					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-top-right-sub-left.scss')
+				}
+				else
+				{
+					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left.scss')
+				}
 				break
 
 			case Menu_Style.SLIDERIGHT:
-				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left-right.scss')
-				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-right.scss')
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-default.scss')
+				if (property.menuConfig.mainStyle === Menu_Style.SLIDELEFT)
+				{
+					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-top-left-sub-right.scss')
+				}
+				else
+				{
+					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-right.scss')
+				}
 				break
 
 			case Menu_Style.EXPAND:

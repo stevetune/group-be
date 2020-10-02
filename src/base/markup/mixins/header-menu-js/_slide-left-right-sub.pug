@@ -11,3 +11,12 @@ script.
 		})
 
 	})
+
+	let submenuCloseButtons = document.querySelectorAll('.header-menu--submenu-close-button')
+
+	submenuCloseButtons.forEach(function(submenuCloseButton)
+	{
+		submenuCloseButton.addEventListener('click', function(){
+			submenuCloseButton.closest('.header-menu--submenu').classList.toggle('is-showing')
+		})
+	})

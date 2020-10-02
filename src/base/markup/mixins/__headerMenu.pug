@@ -18,12 +18,13 @@ mixin headerMenu( menuConfig, menuData )
 							a.header-menu--menu-anchor(href=`${item.href}`)
 								| !{item.title}
 						if item.submenu
-							+closeButton('header-menu--close-button header-menu--submenu-close-button')
-							ul.header-menu--submenu(data-collapsed='true')
-								for subitem in item.submenu
-									li.header-menu--menu-item.header-menu--submenu-item
-										a.header-menu--menu-anchor.header-menu--submenu-anchor(href=`${subitem.href}`)
-											| #{subitem.title}
+							nav.header-menu--submenu
+								+closeButton('header-menu--close-button header-menu--submenu-close-button')
+								ul.header-menu--submenu-list
+									for subitem in item.submenu
+										li.header-menu--menu-item.header-menu--submenu-item
+											a.header-menu--menu-anchor.header-menu--submenu-anchor(href=`${subitem.href}`)
+												| #{subitem.title}
 
 	include ./header-menu-js/main
 
