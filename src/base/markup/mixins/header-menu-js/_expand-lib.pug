@@ -1,0 +1,86 @@
+script.
+
+  function collapseMenuSection(element, subAndTopExpand = false)
+  {
+      let menuSectionHeight = element.scrollHeight
+      let elementTransition = element.style.transition
+      element.style.transition = ''
+    
+      requestAnimationFrame(function()
+      {
+          element.style.height = `${menuSectionHeight}px`
+          element.style.transition = elementTransition
+
+          requestAnimationFrame(function() 
+          {
+            element.style.height = '0px'  
+          })
+      })
+    
+    if(subAndTopExpand)
+    {
+      let outerMenu = document.querySelector('.header-menu')
+      outerMenu.style.height = `${outerMenu.scrollHeight - menuSectionHeight}px`
+    }
+    
+    element.setAttribute('data-collapsed', 'true')
+  }
+
+  function expandMenuSection(element, subAndTopExpand = false)
+  {    
+      let menuSectionHeight = element.scrollHeight
+      element.style.height = `${menuSectionHeight}px`
+
+      if(subAndTopExpand)
+      {
+        let outerMenu = document.querySelector('.header-menu')
+        outerMenu.style.height = `${outerMenu.scrollHeight + menuSectionHeight}px`
+      }
+    
+      element.setAttribute('data-collapsed', 'false')
+  }
+
+  function expandOrCollapseMenuSection(element, subAndTopExpand = false)
+  {
+    let isCollapsed = element.getAttribute('data-collapsed') === 'true'
+
+    if(isCollapsed)
+    { 
+      expandMenuSection(element, subAndTopExpand)
+      element.setAttribute('data-collapsed', 'false') 
+    }
+    else
+    {
+      collapseMenuSection(element, subAndTopExpand) 
+    }
+  }
+
+  function expandOrCollapseEntireMenu() 
+  {
+    let menu = document.querySelector('.header-menu')
+    let isCollapsed = menu.getAttribute('data-collapsed') === 'true'
+    submenus = document.querySelectorAll('.header-menu--submenu')
+
+    if(isCollapsed) 
+    {   
+      let totalSubmenuHeight = 0
+      submenus.forEach(submenu => {
+        submenu.style.height = `${submenu.scrollHeight}px`
+        totalSubmenuHeight += submenu.scrollHeight
+      })
+
+      menu.style.height = `${menu.scrollHeight + totalSubmenuHeight}px`
+
+      menu.setAttribute('data-collapsed', 'false')
+    } 
+    else 
+    {
+      menu.style.height = 0
+      submenus.forEach(submenu => {
+        submenu.style.height = 0
+      })
+
+      menu.setAttribute('data-collapsed', 'true')
+    }
+  }
+

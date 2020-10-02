@@ -1,45 +1,12 @@
-include ./../includes/enums
 include ./__plusButton
 include ./__closeButton
 
 mixin headerMenu( menuConfig, menuData )
 
-	-
-		function getClass(style)
-		{
-			switch(menuConfig.mainStyle)
-			{
-				case Menu_Style.DEFAULT:
-					return 'is-default'
-					break
-
-				case Menu_Style.SLIDELEFT:
-					return 'is-slide-left'
-					break
-
-				case Menu_Style.SLIDERIGHT:
-					return 'is-slide-right'      
-					break
-
-				case Menu_Style.EXPAND:
-					return 'is-expand'
-					break
-
-				default:
-					return 'is-null'
-					break
-			}
-		
-		}
-
-		var msMainClass = getClass(menuConfig.mainStyle)
-		var msSubClass = getClass(menuConfig.subStyle)
-
-
-	nav.header-menu.is-collapsible
-		+closeButton('header-menu--close-button')
-		ul.header-menu--menu(data-collapsed='true' class=`${msMainClass}`)
-			if locals.menuData
+	if locals.menuData
+		nav.header-menu
+			+closeButton('header-menu--close-button')
+			ul.header-menu--menu(data-collapsed='true')
 				for item in locals.menuData
 					li.header-menu--menu-item(class=item.submenu ? 'has-submenu': '')
 						if item.submenu
@@ -51,12 +18,12 @@ mixin headerMenu( menuConfig, menuData )
 							a.header-menu--menu-anchor(href=`${item.href}`)
 								| !{item.title}
 						if item.submenu
-						if item.submenu
-							ul.header-menu--submenu(data-collapsed='true' class=`${msSubClass}`)
+							+closeButton('header-menu--close-button header-menu--submenu-close-button')
+							ul.header-menu--submenu(data-collapsed='true')
 								for subitem in item.submenu
 									li.header-menu--menu-item.header-menu--submenu-item
 										a.header-menu--menu-anchor.header-menu--submenu-anchor(href=`${subitem.href}`)
 											| #{subitem.title}
 
-include ./header-menu-js/main
+	include ./header-menu-js/main
 

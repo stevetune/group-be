@@ -1,8 +1,8 @@
 /* ESSENTIAL IMPORTS */
-@import './../../base/styles/config.scss';
-@import './../../base/styles/base.scss';
-@import './../../base/styles/layout.scss';
-@import './../../base/styles/modules/*.scss';
+@import './../base/styles/config.scss';
+@import './../base/styles/base.scss';
+@import './../base/styles/layout.scss';
+@import './../base/styles/modules/*.scss';
 
 /* VARIABLES */
 $rgb_red: 37;
@@ -135,9 +135,10 @@ $turquoise: #0f3443;
 
 .burger
 {
-	&--slice{
-		
-	}
+	padding-right: 10px;
+	border-right: solid 1px #000;
+	align-self: stretch;
+	margin-right: 10px;
 }
 
 

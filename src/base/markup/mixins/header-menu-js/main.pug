@@ -1,27 +1,27 @@
 include ./../../includes/enums
 
 
-include ./_default
 
 case menuConfig.mainStyle
 
+	when Menu_Style.DEFAULT
+		include ./_default
+
+	when Menu_Style.EXPAND
+		include ./_default
+		include ./_expand-lib
+		include ./_expand-top
+
 	when Menu_Style.SLIDELEFT
 	when Menu_Style.SLIDERIGHT
-	when Menu_Style.EXPAND
-		include ./_open-close
+		include ./_slide-left-right-top
 
+case menuConfig.subStyle
+
+	when Menu_Style.EXPAND
+		include ./_expand-lib
+		include ./_expand-sub
+		
 	when Menu_Style.SLIDELEFT
-		include ./_slide-left
-		include ./_menu-sections
-
 	when Menu_Style.SLIDERIGHT
-		include ./_slide-right
-		include ./_menu-sections
-		
-	when Menu_Style.EXPAND
-		include ./_accordion-subs-auto-expanded
-		include ./_accordion
-		include ./_expand-down
-		
-
-		
+		include ./_slide-left-right-sub

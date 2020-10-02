@@ -1,0 +1,16 @@
+script.
+
+	const burger = document.querySelector('.burger')
+	const closeButton = document.querySelector('.header-menu--close-button')	
+	const headerMenu = document.querySelector('.header-menu')
+
+	burger.addEventListener('click', function()
+	{
+	  	expandOrCollapseMenuSection(headerMenu, false)
+	})
+
+	closeButton.addEventListener('click', function()
+	{
+	  	expandOrCollapseMenuSection(headerMenu, false)
+	})
+

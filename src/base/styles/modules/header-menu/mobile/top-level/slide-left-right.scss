@@ -1,0 +1,18 @@
+@import './../../../../config';
+
+body{
+	overflow-x: hidden;
+}
+
+.header-menu
+{
+	height: 100%;
+	top: 0;
+  box-sizing: border-box;
+  transition: left .5s ease-in;
+
+  &.is-showing
+  {
+    left: 0;
+  }
+}

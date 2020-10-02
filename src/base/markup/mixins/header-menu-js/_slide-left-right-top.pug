@@ -1,0 +1,13 @@
+script.
+
+	const burger = document.querySelector('.burger')
+	const headerMenu = document.querySelector('.header-menu')
+	const closeButton = document.querySelector('.header-menu--close-button')
+
+	burger.addEventListener('click', function(){
+		headerMenu.classList.toggle('is-showing')
+	})
+
+	closeButton.addEventListener('click', function(){
+		headerMenu.classList.toggle('is-showing')
+	})

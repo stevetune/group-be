@@ -37,7 +37,7 @@ const config =
 			beType: BE_Type.ADVANCED,
 			files: 
 			{
-				style: 'prop1/style1',
+				style: 'style1',
 				header: 'prop1/header1',
 				footer: 'prop1/footer1',
 				index: 'prop1/index1',
@@ -55,7 +55,7 @@ const config =
 			beType: BE_Type.ADVANCED,
 			files:
 			{
-				style: 'prop2/style2',
+				style: 'style1',
 				header: 'prop2/header2',
 				footer: 'prop2/footer2',
 				index: 'prop2/index2',
@@ -64,8 +64,8 @@ const config =
 			menuConfig: 
 			{
 				//SlIDELEFT || SLIDERIGHT || EXPAND || DEFAULT
-				mainStyle: Menu_Style.DEFAULT,
-				subStyle: Menu_Style.DEFAULT
+				mainStyle: Menu_Style.SLIDERIGHT,
+				subStyle: Menu_Style.SLIDERIGHT
 			}
 		}
 		//...
@@ -176,13 +176,16 @@ function _getStyleSrcFiles(property)
 		switch(property.menuConfig.mainStyle)
 		{
 			case Menu_Style.DEFAULT:
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/default.scss')
 				break;
 
 			case Menu_Style.SLIDELEFT:
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left-right.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left.scss')
 				break
 
 			case Menu_Style.SLIDERIGHT:
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left-right.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-right.scss')
 				break
 
@@ -198,13 +201,16 @@ function _getStyleSrcFiles(property)
 		switch(property.menuConfig.subStyle)
 		{
 			case Menu_Style.DEFAULT:
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/default.scss')
 				break;
 			
 			case Menu_Style.SLIDELEFT:
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left-right.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left.scss')
 				break
 
 			case Menu_Style.SLIDERIGHT:
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-left-right.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-right.scss')
 				break
 
@@ -227,7 +233,7 @@ function _getStyleSrcFiles(property)
 				extras.push('src/base/styles/themes/advanced.scss')
 				break
 		}
-
+		console.log([`src/cover/${property.files.style}.scss`], extras)
 
 		return [].concat([`src/cover/${property.files.style}.scss`], extras)
 }

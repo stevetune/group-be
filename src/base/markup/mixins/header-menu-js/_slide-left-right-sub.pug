@@ -1,0 +1,13 @@
+script.
+
+	let plusButtonContainers = document.querySelectorAll('.header-menu--plus-button-container')
+
+	plusButtonContainers.forEach(function(plusButtonContainer)
+	{
+		plusButtonContainer.addEventListener('click', function()
+		{
+			let submenu = plusButtonContainer.closest('.header-menu--menu-item').querySelector('.header-menu--submenu')
+			submenu.classList.toggle('is-showing')
+		})
+
+	})

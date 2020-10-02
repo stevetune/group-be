@@ -1,0 +1,14 @@
+.header-menu
+{
+	&--submenu
+	{
+		position: absolute;
+    width: 100%;
+    height: calc(100% - 80px);
+    padding-top: 80px;
+    top: 0;
+    z-index: 1;
+    background: #eee;
+    transition: left .5s ease-in;
+	}
+}
