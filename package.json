@@ -28,5 +28,7 @@
     "nodemon": "^2.0.4",
     "streamqueue": "^1.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "serve-index": "^1.9.1"
+  }
 }
