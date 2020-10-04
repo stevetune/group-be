@@ -12,88 +12,25 @@ let gulp = require('gulp'),
 	injectScss = require('gulp-inject-scss')
 
 
-const BE_Type = 
-{
-	ADVANCED: 1,
-	SMART: 2
-}
-
-const Menu_Style = 
-{
-	DEFAULT: 0,
-	SLIDELEFT: 1, 
-	SLIDERIGHT: 2, 
-	EXPAND: 3,
-	//SLIDEDOWN: 5
-}
-
-const config = 
-{
-	production: false,
-	properties : 
-	[
-		{
-			name: 'generic-place',
-			beType: BE_Type.ADVANCED,
-			files: 
-			{
-				style: 'style1',
-				header: 'prop1/header1',
-				footer: 'prop1/footer1',
-				index: 'prop1/index1',
-				vars: 'prop1/vars1',
-			},
-			menuConfig: 
-			{
-				//SlIDELEFT || SLIDERIGHT || EXPAND || DEFAULT
-				mainStyle: Menu_Style.DEFAULT,
-				subStyle: Menu_Style.DEFAULT
-			}
-		},
-		{
-			name: 'menu-test',
-			beType: BE_Type.ADVANCED,
-			files:
-			{
-				style: 'style1',
-				header: 'prop2/header2',
-				footer: 'prop2/footer2',
-				index: 'prop2/index2',
-				vars: 'prop2/vars2'
-			},
-			menuConfig: 
-			{
-				//SlIDELEFT || SLIDERIGHT || EXPAND || DEFAULT
-				mainStyle: Menu_Style.SLIDELEFT,
-				subStyle: Menu_Style.SLIDERIGHT
-			}
-		}
-		//...
-	]
-}
-
-const sassVars = 
-{
-	containerWidth: '1160px',
-	containerPadding: '15px',
-	mobileWidth: '990px',
-	rgbRed: 15, 
-	rgbGreen: 122, 
-	rgbBlue: 190
-}
 
 const compileSass = function(done)
 {
+	//misc.BE_Type, misc.Menu_Style, config, sassVars
+	//misc = require('./src/config')
+	delete require.cache[require.resolve('./src/config')]
+	misc = require('./src/config')
+
+
 	//delete old config file and add new one
 	// delete require.cache[require.resolve('./src/cover/config.js')]
 	// const { config } = require('./src/cover/config.js')
 
-	config.properties.forEach(function(property)
+	misc.config.properties.forEach(function(property)
 	{
 		const srcFiles = _getStyleSrcFiles(property)
 
 		const prodSass = gulp.src(srcFiles)
-			.pipe( injectScss(sassVars) )
+			.pipe( injectScss( misc.sassVars ) )
 			.pipe( sassGlob() )
 			.pipe( sass( {outputStyle: 'compressed'} ) )
 			.pipe( cleanCss() )
@@ -104,14 +41,14 @@ const compileSass = function(done)
 
 			//with src maps
 			const devOnlySass = gulp.src('src/cover/dev-only.scss')
-				.pipe( injectScss(sassVars) )
+				.pipe( injectScss( misc.sassVars ) )
 				.pipe( sourcemaps.init() )
 				.pipe( sass({outputStyle: 'compressed'}) )
 			 	.pipe( cleanCss() )
 				.pipe( sourcemaps.write() )
 
 			const devSass = gulp.src(srcFiles)
-				.pipe(injectScss(sassVars))
+				.pipe(injectScss( misc.sassVars ))
 				.pipe(sourcemaps.init())
 				.pipe(sassGlob())
 				.pipe( sass( { outputStyle: 'compressed' } ) )
@@ -128,9 +65,16 @@ const compileSass = function(done)
 	done()
 }
 
+let misc
+
 const compilePug = function(done) 
 {
-	config.properties.forEach(function(property)
+	//misc.BE_Type, misc.Menu_Style, config, sassVars
+	//misc = require('./src/config')
+	delete require.cache[require.resolve('./src/config')]
+	misc = require('./src/config')
+
+	misc.config.properties.forEach(function(property)
 	{
 		const pugSrcFiles = _getPugSrcFiles(property)
 
@@ -139,8 +83,8 @@ const compilePug = function(done)
 		delete require.cache[require.resolve( varsFilePath )]
 		let varsFile = require(varsFilePath)
 
-		const localsObj = Object.assign( property, varsFile )
-		//console.log('localsObject', localsObj)
+		const localsObj = Object.assign( property, varsFile, { mobileWidth: misc.sassVars.mobileWidth } )
+		console.log('localsObject', localsObj)
 
 		gulp.src(pugSrcFiles)
 			.pipe( pug( {locals: localsObj, pretty: true} ) )
@@ -175,38 +119,38 @@ function _getStyleSrcFiles(property)
 
 		switch(property.menuConfig.mainStyle)
 		{
-			case Menu_Style.DEFAULT:
-				extras.push('src/base/styles/modules/header-menu/mobile/top-level/default.scss')
+			case misc.Menu_Style.STATIC:
+				extras.push('src/base/styles/modules/header-menu/mobile/top-level/static.scss')
 				break;
 
-			case Menu_Style.SLIDELEFT:
+			case misc.Menu_Style.SLIDELEFT:
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-default.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-left.scss')
 				break
 
-			case Menu_Style.SLIDERIGHT:
+			case misc.Menu_Style.SLIDERIGHT:
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-default.scss')
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-right.scss')
 				break
 
-			case Menu_Style.EXPAND:
+			case misc.Menu_Style.EXPAND:
 				extras.push('src/base/styles/modules/header-menu/mobile/top-level/expand.scss')
 				break		
 
-			// case Menu_Style.SLIDEDOWN:
+			// case misc.Menu_Style.SLIDEDOWN:
 			// 	extras.push('src/base/styles/modules/header-menu/mobile/top-level/slide-down.scss')
 			// 	break 
 		}
 
 		switch(property.menuConfig.subStyle)
 		{
-			case Menu_Style.DEFAULT:
-				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/default.scss')
+			case misc.Menu_Style.STATIC:
+				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/static.scss')
 				break;
 			
-			case Menu_Style.SLIDELEFT:
+			case misc.Menu_Style.SLIDELEFT:
 				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-default.scss')
-				if (property.menuConfig.mainStyle === Menu_Style.SLIDERIGHT)
+				if (property.menuConfig.mainStyle === misc.Menu_Style.SLIDERIGHT)
 				{
 					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-top-right-sub-left.scss')
 				}
@@ -216,9 +160,9 @@ function _getStyleSrcFiles(property)
 				}
 				break
 
-			case Menu_Style.SLIDERIGHT:
+			case misc.Menu_Style.SLIDERIGHT:
 				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-default.scss')
-				if (property.menuConfig.mainStyle === Menu_Style.SLIDELEFT)
+				if (property.menuConfig.mainStyle === misc.Menu_Style.SLIDELEFT)
 				{
 					extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-top-left-sub-right.scss')
 				}
@@ -228,11 +172,11 @@ function _getStyleSrcFiles(property)
 				}
 				break
 
-			case Menu_Style.EXPAND:
+			case misc.Menu_Style.EXPAND:
 				extras.push('src/base/styles/modules/header-menu/mobile/sub-level/expand.scss')
 				break		
 
-			// case Menu_Style.SLIDEDOWN:
+			// case misc.Menu_Style.SLIDEDOWN:
 			// 	extras.push('src/base/styles/modules/header-menu/mobile/sub-level/slide-down.scss')
 			// 	break 
 		}
@@ -240,10 +184,10 @@ function _getStyleSrcFiles(property)
 		//BE Type
 		switch(property.beType)
 		{
-			// case BE_Type.SMART:
+			// case misc.BE_Type.SMART:
 			// 	break
 
-			case BE_Type.ADVANCED:
+			case misc.BE_Type.ADVANCED:
 				extras.push('src/base/styles/themes/advanced.scss')
 				break
 		}
@@ -264,8 +208,14 @@ function _getPugSrcFiles(property)
 const watchFunc = function(done)
 {
 	livereload.listen()
-	gulp.watch(['src/**/*.pug', 'src/**/*.js'], compilePug)
-	gulp.watch(['src/**/*.scss', 'src/cover/config.js'], compileSass)
+	gulp.watch([
+		'src/**/*.pug', 
+		'src/**/*.js', 
+		'src/config.js',
+		'src/**/*.scss', 
+		'src/config.js'
+	], gulp.series(compilePug, compileSass))
+	//gulp.watch([], compileSass)
 
 	done()
 }
