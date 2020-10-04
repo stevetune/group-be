@@ -1,27 +1,27 @@
 include ./../../includes/enums
 
 
+include ./_common
 
 case menuConfig.mainStyle
 
-	when Menu_Style.DEFAULT
-		include ./_default
+	when Menu_Style.STATIC
+		include ./top-level/_static
 
 	when Menu_Style.EXPAND
-		include ./_default
 		include ./_expand-lib
-		include ./_expand-top
+		include ./top-level/_expand
 
 	when Menu_Style.SLIDELEFT
 	when Menu_Style.SLIDERIGHT
-		include ./_slide-left-right-top
+		include ./top-level/_slide-left-right
 
 case menuConfig.subStyle
 
 	when Menu_Style.EXPAND
 		include ./_expand-lib
-		include ./_expand-sub
+		include ./sub-level/_expand
 		
 	when Menu_Style.SLIDELEFT
 	when Menu_Style.SLIDERIGHT
-		include ./_slide-left-right-sub
+		include ./sub-level/_slide-left-right

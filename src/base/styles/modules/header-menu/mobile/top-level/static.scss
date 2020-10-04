@@ -1,10 +1,16 @@
+@import './../../../../config';
+
 .header-menu
 {
-	display: none;
 	transition: height .3s ease-in;
 
 	&--close-button
 	{
 		display: none;
+	}
+
+	@include desktop
+	{
+		display: unset;
 	}
 }

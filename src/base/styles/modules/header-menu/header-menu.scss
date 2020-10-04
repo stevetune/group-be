@@ -72,13 +72,15 @@
 		position: unset !important;
 		align-self: middle;
 
-		&--menu{
+		&--list
+		{
 			display: flex;
 			justify-content: flex-end;
 			flex-wrap: wrap;
 		}
 
-		&--anchor{
+		&--menu-anchor
+		{
 			color: #777;
 			margin-right: 8px;
 		}
@@ -88,17 +90,25 @@
 			color: #fff;
 		}
 
-		&--submenu-item:last-child &--submenu-anchor{
+		&--submenu-item:last-child &--submenu-anchor
+		{
 			padding-bottom: 10px;
 		}
 
-		&--submenu-list{
+		&--submenu
+		{
 			display: none;
 			position: absolute;
 			background-color: #333;
 		}
 
-		&--item:hover &--submenu-list{
+		&--menu-anchor:hover
+		{
+			background-color: unset;
+		}
+
+		&--menu-item:hover &--submenu
+		{
 			display: block;
 		}
 
@@ -106,5 +116,13 @@
 		{
 			display: none;
 		}
+
+		&--plus-button
+		{
+			display: none;
+		}
 	}
 }
+
+
+

@@ -3,11 +3,11 @@ include ./__closeButton
 
 mixin headerMenu( menuConfig, menuData )
 
-	if locals.menuData
+	if menuData
 		nav.header-menu
 			+closeButton('header-menu--close-button')
-			ul.header-menu--menu(data-collapsed='true')
-				for item in locals.menuData
+			ul.header-menu--list
+				for item in menuData
 					li.header-menu--menu-item(class=item.submenu ? 'has-submenu': '')
 						if item.submenu
 							.header-menu--plus-button-container

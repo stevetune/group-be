@@ -23,7 +23,7 @@ script.
       outerMenu.style.height = `${outerMenu.scrollHeight - menuSectionHeight}px`
     }
     
-    menu.classList.toggle('is-showing')
+    menu.classList.remove('is-showing')
   }
 
   function expandMenuSection(menu, subAndTopExpand = false)
@@ -35,16 +35,17 @@ script.
       {
         let outerMenu = document.querySelector('.header-menu')
         outerMenu.style.height = `${outerMenu.scrollHeight + menuSectionHeight}px`
-        outerMenu.classList.toggle('is-showing')
+        outerMenu.classList.add('is-showing')
       }
     
-      menu.classList.toggle('is-showing')
+      menu.classList.add('is-showing')
   }
 
   function expandOrCollapseMenuSection(menu, subAndTopExpand = false)
   {
+    //let isExpanded = menu.classList.contains('is-showing')
     let isExpanded = menu.classList.contains('is-showing')
-    console.log(isExpanded)
+    console.log(isExpanded, 'as', menu.style.height)
 
     if(isExpanded)
     { 

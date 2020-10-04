@@ -1,0 +1,167 @@
+script.
+
+	function menuHeightOnWindowResize()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+		const headerMenu = document.querySelector('.header-menu')
+
+		window.addEventListener('resize', function()
+		{
+			setMenuHeight(mobileWidth, headerMenu)			
+		})
+
+		window.addEventListener('load', function()
+		{
+			setMenuHeight(mobileWidth, headerMenu)
+		})
+
+		function setMenuHeight(mobileWidth, headerMenu)
+		{
+			if(window.innerWidth <= mobileWidth)
+			{
+				headerMenu.style.height = '0px'
+			}
+			else
+			{
+				headerMenu.style.height = 'auto'
+			}
+		}
+	}
+
+	function setAbsoluteTopPosition()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+		const header = document.getElementById('header')
+		const headerMenu = document.querySelector('.header-menu')
+
+		window.addEventListener('load', function(){
+			if(window.innerWidth <= mobileWidth)
+			{
+				headerMenu.style.top = `${header.scrollHeight}px`
+			}
+		})
+		
+		window.addEventListener('resize', function()
+		{
+			if(window.innerWidth <= mobileWidth)
+			{
+				headerMenu.style.top = `${header.scrollHeight}px`
+			}
+		})
+	}
+
+	function openCloseExpandCollapse()
+	{
+		const burger = document.querySelector('.burger')
+		const closeButton = document.querySelector('.header-menu--close-button')
+		const header = document.getElementById('header')
+		const headerMenu = document.querySelector('.header-menu')
+
+		burger.addEventListener('click', function()
+		{
+		  	expandOrCollapseMenuSection(headerMenu, false)
+		})
+
+		closeButton.addEventListener('click', function()
+		{
+		  	expandOrCollapseMenuSection(headerMenu, false)
+		})
+	}
+
+	function plusButtonsExpandCollapse()
+	{
+		let plusButtonContainers = document.querySelectorAll('.header-menu--plus-button-container')
+
+		plusButtonContainers.forEach(function(plusButtonContainer)
+		{
+			plusButtonContainer.addEventListener('click', function()
+			{
+				let headerSubmenu = plusButtonContainer.closest('.header-menu--menu-item').querySelector('.header-menu--submenu')
+				expandOrCollapseMenuSection(headerSubmenu, true)
+			})
+
+		})
+	}
+
+	function resetMenuOnDesktopResize()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+		const headerMenu = document.querySelector('.header-menu')
+		const subMenus = document.querySelectorAll('.header-menu--submenu')
+
+		window.addEventListener('resize', function()
+		{
+			if(window.innerWidth > mobileWidth)
+			{
+				headerMenu.classList.remove('is-showing')
+				subMenus.forEach(function(subMenu){
+					subMenu.classList.remove('is-showing')
+					subMenu.style.height = 'unset'
+				})
+				headerMenu.style.height = 'unset'
+			}
+		})
+	}
+
+	function resetSubMenusOnMobileResize()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+		const subMenus = document.querySelectorAll('.header-menu--submenu')
+
+		window.addEventListener('resize', function()
+		{
+			if(window.innerWidth <= mobileWidth)
+			{
+				subMenus.forEach(function(subMenu){
+					subMenu.style.height = '0px'
+				})
+			}
+		})
+	}
+
+	function setStaticMainMenuInlineHeight()
+	{
+		console.log('setStaticMainMenuInlineHeight')
+
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+
+		window.addEventListener('load', function(){
+			const headerMenu = document.querySelector('.header-menu')
+			
+			headerMenu.style.height = `${headerMenu.scrollHeight}px`
+			
+			window.addEventListener('resize', function()
+			{
+				if(window.innerWidth <= mobileWidth)
+				{
+					headerMenu.style.height = 'unset'
+					headerMenu.style.height = `${headerMenu.scrollHeight}px`
+				}
+			})
+		})
+	}
+
+	function onClickAddRemoveIsShowing()
+	{
+		const burger = document.querySelector('.burger')
+		const headerMenu = document.querySelector('.header-menu')
+		const closeButton = document.querySelector('.header-menu--close-button')
+
+		burger.addEventListener('click', function(){
+			headerMenu.classList.toggle('is-showing')
+		})
+
+		closeButton.addEventListener('click', function(){
+			headerMenu.classList.toggle('is-showing')
+		})
+	}
+
+
+
+
+

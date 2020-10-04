@@ -2,7 +2,12 @@
 
 .header-menu
 {
-	height: 0;
+	height: 0px;
 	overflow: hidden;
 	transition: height .3s ease-in;
+
+	@include desktop
+	{
+		height: auto;
+	}
 }

@@ -2,7 +2,8 @@
 {
 	&--submenu
 	{
-		height: 0;
+		height: 1px;
+		
 		transition: height .3s ease-in;
 		overflow: hidden;
 	}
