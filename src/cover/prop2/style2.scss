@@ -1,0 +1,292 @@
+/* ESSENTIAL IMPORTS */
+@import './../../base/styles/config.scss';
+@import './../../base/styles/base.scss';
+@import './../../base/styles/layout.scss';
+@import './../../base/styles/modules/*.scss';
+
+/* VARIABLES */
+$rgb_red: 37;
+$rgb_green: 62;
+$rgb_blue: 150;
+$darkGrey: #333;
+
+/* STYLES */
+
+/* config */
+$turquoise: #0f3443; 
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+
+
+/* base */
+
+/* layout */
+#header, #footer
+{
+	font: 400 14px/1.2em Bitter, serif;
+}
+
+#header
+{
+	background-color: #fff;
+	color: #333;
+	padding: 0 15px;
+}
+
+#footer
+{
+	padding: 0;
+	background-color: $turquoise;
+	color: #fff;	
+}
+
+#header-lower
+{
+	display: flex;
+	align-items: center;
+}
+
+#footer-upper
+{
+	padding: 50px 0 30px;
+}
+
+#footer-lower
+{
+	border-top: solid #adadad;
+	padding: 16px 0;
+	background-color: rgba(15,52,67,.3);
+}
+
+
+/* modules */
+.main-menu
+{
+	align-self: inherit;
+
+	&--menu
+	{
+		justify-content: flex-start;
+	}
+
+	&--anchor{
+		color: #333;
+		font: inherit;
+		font-weight: 700;
+	}
+
+	&--anchor-sub{
+		font-weight: 400;
+		font-size: 12px;
+	}
+
+	@include desktop
+	{
+		&--menu
+		{
+			margin-left: 200px;
+		}
+
+		&--item-top
+		{
+			padding: 20px 0;
+		}
+
+		&--item-top.has-submenu > &--anchor::after {
+			content: "";
+			width: 0px;
+			height: 0px;
+			border: solid 5px transparent;
+			border-top-color: #000;
+			position: relative;
+    	left: 10px;
+    	top: 2px;
+	  }
+
+	  &--submenu
+	  {
+	    background: #fff;
+	    color: #000 !important;
+	    font-size: inherit;
+	    font-weight: 700;
+	    min-width: 255px;
+	    top: 80px !important;
+	    border: 1px solid rgba(51,51,51,.1);
+	    -webkit-box-shadow: 1px 2px 5px 0 rgba(100,100,100,.36);
+  	  -moz-box-shadow: 1px 2px 5px 0 rgba(100,100,100,.36);
+    	box-shadow: 1px 2px 5px 0 rgba(100,100,100,.36);
+	  }
+
+	  &--anchor-sub
+	  {
+	  	font: inherit;
+	  	color: inherit !important;
+	  	padding: 20px 20px !important;
+	  }
+
+	  &--item-sub:hover
+	  {
+	  	background-color: #eee;
+	  }
+	}
+}
+
+
+.burger
+{
+	padding-right: 10px;
+	border-right: solid 1px #000;
+	align-self: stretch;
+	margin-right: 10px;
+}
+
+
+.footer-sections
+{
+	.icon--text
+	{
+		font: 13px/1.1em Raleway;
+		font-weight: 400;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-bottom: 12px;
+		display: inline-block;
+	}
+
+	&--icon:not(:last-of-type)
+	{
+		display: inline-block;
+	}
+
+	&--header
+	{
+		font-size: 36px;
+		font-weight: 500;
+		margin-bottom: 30px;
+		display: block;
+	}
+
+	@include desktop
+	{
+		display: flex;
+		justify-content: space-between;
+
+	}
+}
+
+#footer-upper
+{
+		.footer-sections
+		{
+			& .footer-sections--section:last-of-type
+			{
+				display: flex;
+			}
+
+			&--icon
+			{
+				font-size: 20px;
+			}
+
+			&--icon:first-of-type
+			{
+				margin-right: 10px;
+			}
+		}
+}
+
+.header-logo
+{
+	&--image
+	{
+		width: 99px;		
+	}
+
+	&--link
+	{
+
+	}
+
+	@include desktop
+	{
+		&--link
+		{
+			// display: block;
+		}
+
+		&--image
+		{
+			padding: 0;
+			margin: 24px 0 24px 20px;
+			width: 154px;
+		}
+	}
+}
+
+.header-svgs
+{
+	display: flex;
+	margin-left: auto;
+	
+	&--anchor
+	{
+		display: flex;
+		align-items: center;
+	}
+
+	&--anchor:first-of-type
+	{
+		padding-right: 20px;
+	}
+
+	&--svg
+	{
+		width: 23px;
+	}
+
+	@include desktop
+	{
+		display: none;
+	}
+}
+
+.book-now-button
+{
+	display: none;
+
+	@include desktop
+	{
+		background-color: #67b1d2;
+		padding: 18px 10px;
+		display: flex;
+		align-items: center;
+		color: #222;
+		cursor: pointer;
+
+		&:hover
+		{
+			opacity: 0.8;
+		}
+
+		&--text
+		{
+			font: 15px/1.1em Raleway;
+			white-space: pre;
+			font-weight: 600;
+		}
+
+		&--svg
+		{
+			width: 14px;
+			height: 14px;
+			margin-right: 10px;
+		}
+	}
+}
+
+
+
+
+
+
