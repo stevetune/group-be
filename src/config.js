@@ -18,15 +18,15 @@ const config =
 	properties : 
 	[
 		{
-			name: 'university-inn-corvallis',
+			name: 'default-prop',
 			beType: BE_Type.ADVANCED,
 			files: 
 			{
-				style: 'university-inn-corvallis/style1',
-				header: 'university-inn-corvallis/header1',
-				footer: 'university-inn-corvallis/footer1',
-				index: 'university-inn-corvallis/index1',
-				vars: 'university-inn-corvallis/vars1',
+				style: 'default-prop/style1',
+				header: 'default-prop/header1',
+				footer: 'default-prop/footer1',
+				index: 'default-prop/index1',
+				vars: 'default-prop/vars1',
 			},
 			menuConfig: 
 			{
@@ -35,24 +35,24 @@ const config =
 				subStyle: Menu_Style.EXPAND
 			}
 		},
-		{
-			name: 'menu-test',
-			beType: BE_Type.ADVANCED,
-			files:
-			{
-				style: 'prop2/style2',
-				header: 'prop2/header2',
-				footer: 'prop2/footer2',
-				index: 'prop2/index2',
-				vars: 'university-inn-corvallis/vars1'
-			},
-			menuConfig: 
-			{
-				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
-				mainStyle: Menu_Style.SLIDERIGHT,
-				subStyle: Menu_Style.EXPAND
-			}
-		}
+		// {
+		// 	name: 'menu-test',
+		// 	beType: BE_Type.ADVANCED,
+		// 	files:
+		// 	{
+		// 		style: 'prop2/style2',
+		// 		header: 'prop2/header2',
+		// 		footer: 'prop2/footer2',
+		// 		index: 'prop2/index2',
+		// 		vars: 'university-inn-corvallis/vars1'
+		// 	},
+		// 	menuConfig: 
+		// 	{
+		// 		//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
+		// 		mainStyle: Menu_Style.SLIDERIGHT,
+		// 		subStyle: Menu_Style.EXPAND
+		// 	}
+		// }
 		//...
 	]
 }
