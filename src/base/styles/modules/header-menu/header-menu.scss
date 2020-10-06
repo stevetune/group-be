@@ -21,21 +21,22 @@
 		padding-bottom: 10px;
 	}
 
-	&--menu-anchor{
+	&--menu-list-item-anchor
+	{
 		font-size: 14px;
 		padding: 10px 20px;
 		display: block;
 		color: inherit;
 	}
 
-	&--submenu-anchor
-	{
-		padding-left: 40px;
-	}
-
-	&--menu-anchor:hover
+	&--menu-list-item-anchor:hover
 	{
 		background-color: #bbb;
+	}
+
+	&--submenu-list-item-anchor
+	{
+		padding-left: 40px;
 	}
 
 	&--plus-button-container
@@ -56,7 +57,7 @@
 		display: none;
 	}
 
-	&--plus-button-container &--menu-anchor
+	&--plus-button-container &--menu-list-item-anchor
 	{
 		width: 90%;
 	}
@@ -72,25 +73,26 @@
 		position: unset !important;
 		align-self: middle;
 
-		&--list
+		&--menu-list
 		{
 			display: flex;
 			justify-content: flex-end;
 			flex-wrap: wrap;
 		}
 
-		&--menu-anchor
+		&--menu-list-item-anchor
 		{
-			color: #777;
+			color: #333;
 			margin-right: 8px;
+			font-weight: 700;
 		}
 
-		&--submenu-anchor{
+		&--submenu-list-item-anchor{
 			padding: 10px 20px 0;
 			color: #fff;
 		}
 
-		&--submenu-item:last-child &--submenu-anchor
+		&--submenu-list-item:last-child &--submenu-list-item-anchor
 		{
 			padding-bottom: 10px;
 		}
@@ -102,12 +104,12 @@
 			background-color: #333;
 		}
 
-		&--menu-anchor:hover
+		&--menu-list-item-anchor:hover
 		{
 			background-color: unset;
 		}
 
-		&--menu-item:hover &--submenu
+		&--menu-list-item:hover &--submenu
 		{
 			display: block;
 		}

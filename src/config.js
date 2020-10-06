@@ -18,21 +18,21 @@ const config =
 	properties : 
 	[
 		{
-			name: 'generic-place',
+			name: 'university-inn-corvallis',
 			beType: BE_Type.ADVANCED,
 			files: 
 			{
-				style: 'style1',
-				header: 'prop1/header1',
-				footer: 'prop1/footer1',
-				index: 'prop1/index1',
-				vars: 'prop1/vars1',
+				style: 'university-inn-corvallis/style1',
+				header: 'university-inn-corvallis/header1',
+				footer: 'university-inn-corvallis/footer1',
+				index: 'university-inn-corvallis/index1',
+				vars: 'university-inn-corvallis/vars1',
 			},
 			menuConfig: 
 			{
 				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
-				mainStyle: Menu_Style.STATIC,
-				subStyle: Menu_Style.STATIC
+				mainStyle: Menu_Style.SLIDERIGHT,
+				subStyle: Menu_Style.EXPAND
 			}
 		},
 		{
@@ -40,17 +40,17 @@ const config =
 			beType: BE_Type.ADVANCED,
 			files:
 			{
-				style: 'style1',
+				style: 'prop2/style2',
 				header: 'prop2/header2',
 				footer: 'prop2/footer2',
 				index: 'prop2/index2',
-				vars: 'prop2/vars2'
+				vars: 'university-inn-corvallis/vars1'
 			},
 			menuConfig: 
 			{
 				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
 				mainStyle: Menu_Style.SLIDERIGHT,
-				subStyle: Menu_Style.SLIDERIGHT
+				subStyle: Menu_Style.EXPAND
 			}
 		}
 		//...
@@ -62,9 +62,9 @@ const sassVars =
 	containerWidth: '1160px',
 	containerPadding: '15px',
 	mobileWidth: '990px',
-	rgbRed: 15, 
-	rgbGreen: 122, 
-	rgbBlue: 190
+	rgbRed: 103, 
+	rgbGreen: 177, 
+	rgbBlue: 210
 }
 
 module.exports.BE_Type = BE_Type 

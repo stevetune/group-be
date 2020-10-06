@@ -78,7 +78,7 @@ script.
 		{
 			plusButtonContainer.addEventListener('click', function()
 			{
-				let headerSubmenu = plusButtonContainer.closest('.header-menu--menu-item').querySelector('.header-menu--submenu')
+				let headerSubmenu = plusButtonContainer.closest('.header-menu--menu-list-item').querySelector('.header-menu--submenu')
 				expandOrCollapseMenuSection(headerSubmenu, true)
 			})
 
@@ -99,9 +99,9 @@ script.
 				headerMenu.classList.remove('is-showing')
 				subMenus.forEach(function(subMenu){
 					subMenu.classList.remove('is-showing')
-					subMenu.style.height = 'unset'
+					subMenu.style.height = 'auto'
 				})
-				headerMenu.style.height = 'unset'
+				headerMenu.style.height = 'auto'
 			}
 		})
 	}
@@ -125,8 +125,6 @@ script.
 
 	function setStaticMainMenuInlineHeight()
 	{
-		console.log('setStaticMainMenuInlineHeight')
-
 		const mobileWidthWithPx = `#{locals.mobileWidth}`
 		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
 
@@ -161,6 +159,67 @@ script.
 		})
 	}
 
+	function slideLeftRightSub()
+	{
+		let plusButtonContainers = document.querySelectorAll('.header-menu--plus-button-container')
+
+		plusButtonContainers.forEach(function(plusButtonContainer)
+		{
+			plusButtonContainer.addEventListener('click', function()
+			{
+				let submenu = plusButtonContainer.closest('.header-menu--menu-list-item').querySelector('.header-menu--submenu')
+				submenu.classList.toggle('is-showing')
+			})
+
+		})
+
+		let submenuCloseButtons = document.querySelectorAll('.header-menu--submenu-close-button')
+
+		submenuCloseButtons.forEach(function(submenuCloseButton)
+		{
+			submenuCloseButton.addEventListener('click', function(){
+				submenuCloseButton.closest('.header-menu--submenu').classList.toggle('is-showing')
+			})
+		})
+	}
+
+	function resetPlusButtonsOnDesktopResize()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+
+		window.addEventListener('load', function()
+		{
+			const plusButtons = document.querySelectorAll('.header-menu--plus-button')
+			
+			window.addEventListener('resize', function()
+			{
+				plusButtons.forEach(function(plusButton)
+				{
+					plusButton.classList.remove('is-active')
+				})
+			})
+		})
+	}
+
+	function setSubMenuHeightsToZeroOnLoad()
+	{
+		const mobileWidthWithPx = `#{locals.mobileWidth}`
+		const mobileWidth = mobileWidthWithPx.substring(0, mobileWidthWithPx.length - 2)
+
+		window.addEventListener('load', function()
+		{
+			const subMenus = document.querySelectorAll('.header-menu--submenu')
+
+			if(window.innerWidth <= mobileWidth)
+			{
+				subMenus.forEach(function(subMenu)
+				{
+					subMenu.style.height = '0px'
+				})
+			}
+		})
+	}
 
 
 

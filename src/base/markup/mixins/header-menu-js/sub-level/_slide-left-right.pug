@@ -1,22 +1,5 @@
 script.
 
-	let plusButtonContainers = document.querySelectorAll('.header-menu--plus-button-container')
+	slideLeftRightSub()
 
-	plusButtonContainers.forEach(function(plusButtonContainer)
-	{
-		plusButtonContainer.addEventListener('click', function()
-		{
-			let submenu = plusButtonContainer.closest('.header-menu--menu-item').querySelector('.header-menu--submenu')
-			submenu.classList.toggle('is-showing')
-		})
-
-	})
-
-	let submenuCloseButtons = document.querySelectorAll('.header-menu--submenu-close-button')
-
-	submenuCloseButtons.forEach(function(submenuCloseButton)
-	{
-		submenuCloseButton.addEventListener('click', function(){
-			submenuCloseButton.closest('.header-menu--submenu').classList.toggle('is-showing')
-		})
-	})
+	

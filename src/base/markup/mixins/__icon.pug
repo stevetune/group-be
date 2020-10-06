@@ -1,11 +1,11 @@
-mixin icon(i_class, o_class, href, a_class='', text='')
-	.icon(class=`${o_class ? o_class : ''}`)
+mixin icon(icon_class, outer_class='', href='', anchor_class='', text='')
+	.icon(class=`${outer_class ? outer_class : ''}`)
 		if href
-			a(href=`${href}`, class=`icon--anchor ${a_class}`)
-				i(class=`icon--icon ${i_class}`)
+			a(href=`${href}`, class=`icon--anchor ${anchor_class}`)
+				i(class=`icon--icon ${icon_class}`)
 				if text
-					span.icon--text #{text}
+					span.icon--text !{text}
 		else
-			i(class=`icon--icon ${i_class}`)
-				if text
-					span.icon--text #{text}
+			i(class=`icon--icon ${icon_class}`)
+			if text
+				span.icon--text !{text}

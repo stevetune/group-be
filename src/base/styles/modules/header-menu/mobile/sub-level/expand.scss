@@ -1,9 +1,7 @@
 .header-menu
 {
 	&--submenu
-	{
-		height: 1px;
-		
+	{		
 		transition: height .3s ease-in;
 		overflow: hidden;
 	}

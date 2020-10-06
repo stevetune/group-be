@@ -6,24 +6,24 @@ mixin headerMenu( menuConfig, menuData )
 	if menuData
 		nav.header-menu
 			+closeButton('header-menu--close-button')
-			ul.header-menu--list
+			ul.header-menu--menu-list
 				for item in menuData
-					li.header-menu--menu-item(class=item.submenu ? 'has-submenu': '')
+					li.header-menu--menu-list-item(class=item.submenu ? 'has-submenu': '')
 						if item.submenu
 							.header-menu--plus-button-container
-								a.header-menu--menu-anchor(href=`${item.href}`)
+								a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 									| !{item.title}
 								+plusButton('header-menu--plus-button')
 						else
-							a.header-menu--menu-anchor(href=`${item.href}`)
+							a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 								| !{item.title}
 						if item.submenu
 							nav.header-menu--submenu
 								+closeButton('header-menu--close-button header-menu--submenu-close-button')
 								ul.header-menu--submenu-list
 									for subitem in item.submenu
-										li.header-menu--menu-item.header-menu--submenu-item
-											a.header-menu--menu-anchor.header-menu--submenu-anchor(href=`${subitem.href}`)
+										li.header-menu--menu-list-item.header-menu--submenu-list-item
+											a.header-menu--menu-list-item-anchor.header-menu--submenu-list-item-anchor(href=`${subitem.href}`)
 												| #{subitem.title}
 
 	include ./header-menu-js/main
