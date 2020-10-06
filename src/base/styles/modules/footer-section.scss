@@ -1,0 +1,35 @@
+.footer-section
+{
+	display: flex;
+
+  &--sub-section{
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  &--sub-section-title{
+    font-weight: 700; 
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+
+  &--sub-section-anchor{
+   display: block;
+  }
+
+  &--sub-section-menu
+  {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+  }  
+
+   &--sub-section-menu-item-anchor
+   {
+      padding-right: 20px;
+   }
+}

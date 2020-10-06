@@ -84,7 +84,6 @@ const compilePug = function(done)
 		let varsFile = require(varsFilePath)
 
 		const localsObj = Object.assign( property, varsFile, { mobileWidth: misc.sassVars.mobileWidth } )
-		console.log('localsObject', localsObj)
 
 		gulp.src(pugSrcFiles)
 			.pipe( pug( {locals: localsObj, pretty: true} ) )
@@ -115,7 +114,7 @@ function _getStyleSrcFiles(property)
 
 		extras.push('src/base/styles/modules/header-menu/header-menu.scss')
 		extras.push('src/base/styles/modules/header-menu/plus-button.scss')
-		extras.push('src/base/styles/modules/header-menu/close-button.scss')
+		extras.push('src/base/styles/modules/header-menu/header-menu-close-button.scss')
 
 		switch(property.menuConfig.mainStyle)
 		{
@@ -191,8 +190,7 @@ function _getStyleSrcFiles(property)
 				extras.push('src/base/styles/themes/advanced.scss')
 				break
 		}
-		console.log([`src/cover/${property.files.style}.scss`], extras)
-
+		
 		return [].concat([`src/cover/${property.files.style}.scss`], extras)
 }
 
