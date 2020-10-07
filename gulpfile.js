@@ -17,8 +17,8 @@ const compileSass = function(done)
 {
 	//misc.BE_Type, misc.Menu_Style, config, sassVars
 	//misc = require('./src/config')
-	delete require.cache[require.resolve('./src/config')]
-	misc = require('./src/config')
+	delete require.cache[require.resolve('./src/cover/config')]
+	misc = require('./src/cover/config')
 
 
 	//delete old config file and add new one
@@ -71,8 +71,8 @@ const compilePug = function(done)
 {
 	//misc.BE_Type, misc.Menu_Style, config, sassVars
 	//misc = require('./src/config')
-	delete require.cache[require.resolve('./src/config')]
-	misc = require('./src/config')
+	delete require.cache[require.resolve('./src/cover/config')]
+	misc = require('./src/cover/config')
 
 	misc.config.properties.forEach(function(property)
 	{
@@ -115,6 +115,7 @@ function _getStyleSrcFiles(property)
 		extras.push('src/base/styles/modules/header-menu/header-menu.scss')
 		extras.push('src/base/styles/modules/header-menu/plus-button.scss')
 		extras.push('src/base/styles/modules/header-menu/header-menu-close-button.scss')
+		extras.push('src/base/styles/modules/header-menu/arrow-button.scss')
 
 		switch(property.menuConfig.mainStyle)
 		{
@@ -209,9 +210,7 @@ const watchFunc = function(done)
 	gulp.watch([
 		'src/**/*.pug', 
 		'src/**/*.js', 
-		'src/config.js',
-		'src/**/*.scss', 
-		'src/config.js'
+		'src/**/*.scss'
 	], gulp.series(compilePug, compileSass))
 	//gulp.watch([], compileSass)
 

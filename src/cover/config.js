@@ -12,29 +12,60 @@ const Menu_Style =
 	EXPAND: 3
 }
 
+const Dropdown_Icon_Style = 
+{
+	NONE: 0,
+	STATIC_ARROW: 1,
+	ANIMATED_ARROW: 2,
+	STATIC_PLUS: 3,
+	ANIMATED_PLUS: 4 
+}
+
 const config = 
 {
 	production: false,
 	properties : 
 	[
 		{
-			name: 'default-prop',
+			name: 'eisenhower-hotel',
 			beType: BE_Type.ADVANCED,
 			files: 
 			{
-				style: 'default-prop/style1',
-				header: 'default-prop/header1',
-				footer: 'default-prop/footer1',
-				index: 'default-prop/index1',
-				vars: 'default-prop/vars1',
+				style: 'eisenhower-hotel/style',
+				header: 'eisenhower-hotel/header',
+				footer: 'eisenhower-hotel/footer',
+				index: 'eisenhower-hotel/index',
+				vars: 'eisenhower-hotel/vars',
 			},
 			menuConfig: 
 			{
 				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
 				mainStyle: Menu_Style.SLIDERIGHT,
-				subStyle: Menu_Style.EXPAND
+				subStyle: Menu_Style.DEFAULT,
+				ddIconMainStyle: Dropdown_Icon_Style.ANIMATED_ARROW,
+				ddIconSubStyle: Dropdown_Icon_Style.NONE
 			}
 		},
+		{
+			name: 'default-prop',
+			beType: BE_Type.ADVANCED,
+			files: 
+			{
+				style: 'default-prop/style',
+				header: 'default-prop/header',
+				footer: 'default-prop/footer',
+				index: 'default-prop/index',
+				vars: 'default-prop/vars',
+			},
+			menuConfig: 
+			{
+				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
+				mainStyle: Menu_Style.SLIDERIGHT,
+				subStyle: Menu_Style.EXPAND,
+				ddIconMainStyle: Dropdown_Icon_Style.ANIMATED_ARROW,
+				ddIconSubStyle: Dropdown_Icon_Style.NONE
+			}
+		}
 		// {
 		// 	name: 'menu-test',
 		// 	beType: BE_Type.ADVANCED,
@@ -59,8 +90,8 @@ const config =
 
 const sassVars = 
 {
-	containerWidth: '1160px',
-	containerPadding: '15px',
+	containerWidth: '1260px',
+	containerPadding: '24px',
 	mobileWidth: '990px',
 	rgbRed: 103, 
 	rgbGreen: 177, 
