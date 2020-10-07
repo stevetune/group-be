@@ -25,11 +25,11 @@ module.exports = {
 		  ]
 		},
 		{
-		  href: 'https://www.universityinncorvallis.com/special-offers.html',
+		  href: '#',
 		  title: 'Special Offers'
 		},
 		{
-		  href: 'https://www.universityinncorvallis.com/amenities.html',
+		  href: '#',
 		  title: 'Amenities'
 		},
 		{
@@ -60,83 +60,95 @@ module.exports = {
 		}
 	],
 
-	footer_section_1: [
-		[
-			{
-				type: 'text',
-				value: '<span class=\'footer-sections--header\'>University Inn Corvallis</span>'
-			},
-			{
-				type: 'icon_with_anchor',
-				value: {
-						icon_class: 'fa fa-phone',
-						text: 'Phone: 1-541-753-4496'
-				}
-			},
-			{
-				type: 'icon_with_anchor',
-				value: {
-					href: 'https://www.facebook.com/TheWindsorSuites/',
-					icon_class: 'fa fa-envelope',
-					text: 'Email: corvallisuniversityinn@gmail.com'
-				}
-			},
-			{
-				type: 'icon_with_anchor',
-				value: {
-					text: '350 SW FOURTH STREET, CORVALLIS, Oregon, 97333, USA',
-					icon_class: 'fa fa-map-marker'
-				}
-			}
-		],
-		[
-			{
-				type: 'icon_with_anchor',
-				value: {
-					href: 'https://www.facebook.com/University-Inn-Corvallis-732506300230565/',
-					icon_class: 'fa fa-facebook-f'
-				}
-			},
-			{
-				type: 'icon_with_anchor',
-				value: {
-					href: 'https://www.tripadvisor.ca/Hotel_Review-g51817-d8474814-Reviews-University_Inn_Corvallis-Corvallis_Oregon.html',
-					icon_class: 'fa fa-tripadvisor'
-				}
-			}
-		]
-	],
-	footer_section_2: [
-		[
-			{
-				type: 'list',
-				value: [
+	footer_section_1: {
+		section_class: 'is-upper',
+		sub_sections: [
+			{		
+				sub_section_class: 'is-upper-top',
+				sub_section_objects: [
 					{
-						href: 'https://www.universityinncorvallis.com/reviews.html',
-						title: 'Reviews'
+						type: 'text',
+						value: '<span class=\'footer-section--sub-section-header\'>Nick Cage Inn</span>'
 					},
 					{
-						href: 'https://www.universityinncorvallis.com/location.html',
-						title: 'Location'
+						type: 'icon_with_anchor',
+						value: {
+								icon_class: 'fa fa-phone',
+								outer_class: 'is-contact-info',
+								text: '<span class=\'footer-section--sub-section-label\'>Phone: </span>1-555-753-4496'
+						}
 					},
 					{
-						href: 'https://www.universityinncorvallis.com/policies.html',
-						title: 'Policies'
+						type: 'icon_with_anchor',
+						value: {
+							icon_class: 'fa fa-envelope',
+							outer_class: 'is-contact-info',
+							text: '<span class=\'footer-section--sub-section-label\'>Email: </span>contact@nickcageinn.com',
+							href: 'mailto:contact@nickcageinn.com'
+						}
+					},
+					{
+						type: 'icon_with_anchor',
+						value: {
+							icon_class: 'fa fa-map-marker',
+							outer_class: 'is-contact-info',
+							text: '<span class=\'footer-section--sub-section-label\'>Address: </span>12345 Hollywood Blvd, Hollywood, CA, 12345, USA'
+						}
+					}
+				]
+			},
+			{
+				sub_section_class: 'is-upper-bottom',
+				sub_section_objects: [
+					{
+						type: 'icon_with_anchor',
+						value: {
+							href: 'https://www.facebook.com/',
+							icon_class: 'fa fa-facebook-f'
+						}
+					},
+					{
+						type: 'icon_with_anchor',
+						value: {
+							href: 'https://www.tripadvisor.ca',
+							icon_class: 'fa fa-tripadvisor'
+						}
 					}
 				]
 			}
-		],
-		[
+		]
+	},
+	footer_section_2: {
+		section_class: 'is-lower',
+		sub_sections: [
 			{
-				type: 'image_with_anchor',
-				value: {
-					src: 'https://www.universityinncorvallis.com/assets/images/vizlly-icon.png',
-					href: 'https://www.vizlly.com/',
-					text: 'Powered By Vizlly'
-				}
+				sub_section_class: 'is-lower-top',
+				sub_section_objects: [
+					{
+						type: 'list',
+						value: [
+							{
+								href: '#',
+								title: 'Reviews'
+							},
+							{
+								href: '#',
+								title: 'Location'
+							},
+							{
+								href: '#',
+								title: 'Policies'
+							}
+						]
+					},
+					{
+						type: 'text',
+						value: 'Powered By Vizlly'
+					}
+				]
 			}
 		]
-	]
+	}
 }
 
 

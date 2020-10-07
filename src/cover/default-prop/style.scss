@@ -57,7 +57,7 @@ $darkGrey: #333;
 	
 	@include desktop
 	{
-	
+		margin-left: auto;	
 	}
 }
 
@@ -70,7 +70,21 @@ $darkGrey: #333;
 
 .footer-section
 {
-	
+	&--sub-section
+	{
+		width: 100%;
+	}
+
+	&--sub-section.is-lower-top
+	{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&--sub-section.is-lower-top &--sub-section-text
+	{
+		text-align: right;
+	}
 }
 
 .header-logo

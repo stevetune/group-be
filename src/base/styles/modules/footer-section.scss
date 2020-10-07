@@ -2,21 +2,30 @@
 {
 	display: flex;
 
-  &--sub-section{
+  &--sub-section
+  {
     color: inherit;
     font-size: inherit;
-    line-height: inherit;
+    line-height: 1.6em;
   }
 
-  &--sub-section-title{
-    font-weight: 700; 
-    font-size: 14px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
+  &--sub-section-header
+  {
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 14px;
     letter-spacing: 1px;
+    display: block;
   }
 
-  &--sub-section-anchor{
+ &--sub-section-label
+ {
+    font-weight: 600; 
+    font-size: 12px;
+ }
+
+  &--sub-section-anchor
+  {
    display: block;
   }
 

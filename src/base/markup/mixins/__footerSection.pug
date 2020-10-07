@@ -5,32 +5,32 @@ mixin footerSection( section )
 				.footer-section--sub-section(class=`${sub_section.sub_section_class}`)
 					each object in sub_section.sub_section_objects
 						if object.type == 'header'
-							h2.footer-section--sub-section-header !{object.value} 
+							h2.footer-section--sub-section.footer-section--sub-section-header !{object.value} 
 						
 						if object.type == 'text'
-							.footer-section--sub-section-text !{object.value}
+							.footer-section--sub-section.footer-section--sub-section-text !{object.value}
 						
 						if object.type == 'html'
-							.footer-section--sub-section-text.footer-section--sub-section-html !{object.value}
+							.footer-section--sub-section.footer-section--sub-section-html !{object.value}
 						
 						if object.type == 'anchor'
-							a.footer-section--sub-section-anchor(href=`${object.value.href}`)
+							a.footer-section--sub-section.footer-section--sub-section-anchor(href=`${object.value.href}`)
 								span.footer-section--sub-section-anchor-text #{object.value.text}
 						
 						if object.type == 'image'
-							img.footer-section--sub-section-image-src(src=`${object.value}`)
+							img.footer-section--sub-section.footer-section--sub-section-image-src(src=`${object.value}`)
 						
 						if object.type == 'image_with_anchor'
-							a.footer-section--sub-section-image-with-anchor-href(href=`${object.value.href}`)
+							a.footer-section--sub-section.footer-section--sub-section-image-with-anchor-href(href=`${object.value.href}`)
 								img.footer-section--sub-section-image-with-anchor-src(src=`${object.value.src}`)
 								| #{object.value.text}
 
 						if object.type == 'icon_with_anchor'
-							.footer-section--sub-section-icon 
+							.footer-section--sub-section.footer-section--sub-section-icon 
 								+icon(object.value.icon_class, object.value.outer_class, object.value.href, object.value.anchor_class, object.value.text)
 
 						if object.type === 'list'
-							ul.footer-section--sub-section-menu
+							ul.footer-section--sub-section.footer-section--sub-section-menu
 								each item in object.value
 									li.footer-section--sub-section-menu-item
 										a.footer-section--sub-section-menu-item-anchor(href=`${item.href}`) !{item.title}
