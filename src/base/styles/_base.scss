@@ -1,8 +1,10 @@
-html{
+html
+{
 	height: 100%;
 }
 	
-body{ 
+body
+{ 
 	min-height: 100%;
 	margin:0;
 	display: flex;
@@ -10,22 +12,26 @@ body{
 	background: url(https://picsum.photos/2000/1000?grayscale) center/cover no-repeat !important; 
 }
 
-header,footer{
+header,footer
+{
 	box-sizing: border-box;
 	font-family:"Open Sans", sans-serif;
 	
-	a{
+	a
+	{
 		text-decoration: none;
 		color: inherit;
 	}
 
-	ul{
+	ul
+	{
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 }
 
-footer{
+footer
+{
 	margin-top: auto;
 }

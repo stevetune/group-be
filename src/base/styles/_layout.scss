@@ -1,21 +1,23 @@
 
-#header{
+#header
+{
 	background-color: #fff;
 }
 
-#header-upper{
+#header-upper
+{
 	display: flex;
 	align-items:center;
 	justify-content: space-between;
 }
 
-#footer{
+#footer
+{
 	background-color: #fff;
 	display: flex;
-    padding: 67px 0 70px;
-    flex-direction: column;
-    align-items: center;
-    z-index: 0;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0;
 }
 
 #footer-upper, #footer-lower
@@ -23,50 +25,66 @@
 	width: 100%;
 }
 
-#header, #footer{
+#header, #footer
+{
 	font: 24px/24px Arial;
 	text-rendering:optimizelegibility;
 	-webkit-font-smoothing:antialiased;
 }
 
 
-.l-container{
+.l-container
+{
 	width: 100%;
 	box-sizing: border-box;
 	padding: 0 20px;
 
-	@include desktop{
+	@include desktop
+	{
 		max-width: #{$containerWidth};
 		margin: 0 auto;
 		padding: 0 #{$containerPadding};
 	}
 }
 
-.l-flex{
+.l-flex
+{
 	display: flex;	
 }
 
-.l-space-between{
+.l-flex-vcenter
+{
+	display: flex;
+	align-items: center;	
+}
+
+.l-space-between
+{
 	justify-content: space-between;
 }
 
-.l-justify-center{
+.l-justify-center
+{
 	justify-content: center;
 }
 
-.l-align-center{
+.l-align-center
+{
 	align-items: center;
 }
 
-.l-text-center{
+.l-text-center
+{
 	text-align: center;
 }
 
-.is-not-scrollable{
+.is-not-scrollable
+{
 	overflow-y: hidden;
 }
 
-.l-flex-column{
+.l-flex-column
+{
 	flex-direction: column;
 }
 
