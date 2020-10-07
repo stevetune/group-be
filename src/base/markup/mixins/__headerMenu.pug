@@ -1,5 +1,3 @@
-include ./__plusButton
-include ./__closeButton
 
 mixin headerMenu( menuConfig, menuData )
 
@@ -10,10 +8,14 @@ mixin headerMenu( menuConfig, menuData )
 				for item in menuData
 					li.header-menu--menu-list-item(class=item.submenu ? 'has-submenu': '')
 						if item.submenu
-							.header-menu--plus-button-container
+							.header-menu--dd-icon-container
 								a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 									| !{item.title}
-								+plusButton('header-menu--plus-button')
+								//- animated arrow
+								if menuConfig.ddIconMainStyle == 2
+									+arrowButton('header-menu--arrow-button')
+								else
+									+plusButton('header-menu--plus-button')
 						else
 							a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 								| !{item.title}

@@ -1,5 +1,5 @@
-mixin burger(text = '')
-	.burger
+mixin burger(additional_class='', text = '')
+	.burger(class=`${additional_class}`)
 		.burger--slices
 			.burger--slice
 			.burger--slice.burger--middle-slice
