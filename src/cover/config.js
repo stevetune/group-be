@@ -27,26 +27,6 @@ const config =
 	properties : 
 	[
 		{
-			name: 'eisenhower-hotel',
-			beType: BE_Type.ADVANCED,
-			files: 
-			{
-				style: 'eisenhower-hotel/style',
-				header: 'eisenhower-hotel/header',
-				footer: 'eisenhower-hotel/footer',
-				index: 'eisenhower-hotel/index',
-				vars: 'eisenhower-hotel/vars',
-			},
-			menuConfig: 
-			{
-				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
-				mainStyle: Menu_Style.SLIDERIGHT,
-				subStyle: Menu_Style.DEFAULT,
-				ddIconMainStyle: Dropdown_Icon_Style.ANIMATED_ARROW,
-				ddIconSubStyle: Dropdown_Icon_Style.NONE
-			}
-		},
-		{
 			name: 'default-prop',
 			beType: BE_Type.ADVANCED,
 			files: 
@@ -66,24 +46,6 @@ const config =
 				ddIconSubStyle: Dropdown_Icon_Style.NONE
 			}
 		}
-		// {
-		// 	name: 'menu-test',
-		// 	beType: BE_Type.ADVANCED,
-		// 	files:
-		// 	{
-		// 		style: 'prop2/style2',
-		// 		header: 'prop2/header2',
-		// 		footer: 'prop2/footer2',
-		// 		index: 'prop2/index2',
-		// 		vars: 'university-inn-corvallis/vars1'
-		// 	},
-		// 	menuConfig: 
-		// 	{
-		// 		//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
-		// 		mainStyle: Menu_Style.SLIDERIGHT,
-		// 		subStyle: Menu_Style.EXPAND
-		// 	}
-		// }
 		//...
 	]
 }
