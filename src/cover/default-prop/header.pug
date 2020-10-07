@@ -1,0 +1,9 @@
+extends ./../../base/markup/header.pug   
+
+block headerBlock
+  #header-lower
+    .l-container.l-flex-vcenter
+      +burger()
+      +headerLogo()
+      +headerMenu(locals.menuConfig, locals.menuData)
+      

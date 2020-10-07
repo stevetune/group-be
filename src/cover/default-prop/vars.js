@@ -1,28 +1,28 @@
 module.exports = {
 
 
-	website_url: "https://www.universityinncorvallis.com/",
+	website_url: 'https://fakehotelwebsite.com/',
 	
-	logo_url: 'https://d1dzqwexhp5ztx.cloudfront.net/imageRepo/6/0/95/627/296/logo_3_D.jpg',
+	logo_url: 'https://www.placecage.com/150/100',
 
 	menuData: [
 		{
 		  href: '#',
-		  title: 'Accommodations',
+		  title: 'About Us'
+		},
+		{
+			href: '#',
+			title: 'Rooms', 
 		  submenu: [
 		    {
-		      href: 'https://www.universityinncorvallis.com/accommodations/guest-rooms-and-suites.html',
+		      href: '#',
 		      title: 'Guest Rooms & Suites'  
 		    },
 		    {
-		      href: 'https://www.universityinncorvallis.com/accommodations/group-bookings.html',
+		      href: '#',
 		      title: 'Group Bookings'
 		    }
 		  ]
-		},
-		{
-		  href: 'https://www.universityinncorvallis.com/extended-stay.html',
-		  title: 'Extended Stay'
 		},
 		{
 		  href: 'https://www.universityinncorvallis.com/special-offers.html',
@@ -33,30 +33,30 @@ module.exports = {
 		  title: 'Amenities'
 		},
 		{
-		  href: 'https://www.thewindsorsuites.com/special-pkg',
+		  href: '#',
 		  title: 'In The Area',
 		  submenu: [
 		  	{
 		  		title: 'Things To Do',
-		  		href: 'https://www.universityinncorvallis.com/in-the-area/things-to-do.html'
+		  		href: '#'
 		  	},
 		  	{
-		  		title: 'Oregon State University',
-		  		href: 'https://www.universityinncorvallis.com/in-the-area/oregon-state-university.html'
+		  		title: 'Attractions',
+		  		href: '#'
 		  	},
 		  	{
-		  		title: 'Reser Stadium',
-		  		href: 'https://www.universityinncorvallis.com/in-the-area/reser-stadium.html'
+		  		title: 'Restaurants',
+		  		href: '#'
 		  	}
 		  ]
 		},
 		{
-		  href: 'https://www.universityinncorvallis.com/dining.html',
+		  href: '#',
 		  title: 'Dining'
 		},
 		{
-		  href: 'https://www.universityinncorvallis.com/gallery.html',
-		  title: 'Gallery'
+		  href: '#',
+		  title: 'Pics'
 		}
 	],
 
