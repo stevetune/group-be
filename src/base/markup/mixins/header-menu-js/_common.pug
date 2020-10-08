@@ -54,19 +54,22 @@ script.
 
 	function openCloseExpandCollapse()
 	{
-		const burger = document.querySelector('.burger')
-		const closeButton = document.querySelector('.header-menu--close-button')
-		const header = document.getElementById('header')
-		const headerMenu = document.querySelector('.header-menu')
-
-		burger.addEventListener('click', function()
+		window.addEventListener('load', function()
 		{
-		  	expandOrCollapseMenuSection(headerMenu, false)
-		})
+			const burger = document.querySelector('.burger')
+			const closeButton = document.querySelector('.header-menu--close-button')
+			const header = document.getElementById('header')
+			const headerMenu = document.querySelector('.header-menu')
 
-		closeButton.addEventListener('click', function()
-		{
-		  	expandOrCollapseMenuSection(headerMenu, false)
+			burger.addEventListener('click', function()
+			{
+			  	expandOrCollapseMenuSection(headerMenu, false)
+			})
+
+			closeButton.addEventListener('click', function()
+			{
+			  	expandOrCollapseMenuSection(headerMenu, false)
+			})
 		})
 	}
 
@@ -146,16 +149,21 @@ script.
 
 	function onClickAddRemoveIsShowing()
 	{
-		const burger = document.querySelector('.burger')
-		const headerMenu = document.querySelector('.header-menu')
-		const closeButton = document.querySelector('.header-menu--close-button')
+		window.addEventListener('load', function()
+		{
+			const burger = document.querySelector('.burger')
+			const headerMenu = document.querySelector('.header-menu')
+			const closeButton = document.querySelector('.header-menu--close-button')
 
-		burger.addEventListener('click', function(){
-			headerMenu.classList.toggle('is-showing')
-		})
+			burger.addEventListener('click', function()
+			{
+				headerMenu.classList.toggle('is-showing')
+			})
 
-		closeButton.addEventListener('click', function(){
-			headerMenu.classList.toggle('is-showing')
+			closeButton.addEventListener('click', function()
+			{
+				headerMenu.classList.toggle('is-showing')
+			})
 		})
 	}
 
