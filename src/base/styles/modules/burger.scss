@@ -1,8 +1,15 @@
-.burger{
-  display: flex;
-  align-items: center;
+.burger
+{
+	display: block;
 
-  &--slices{
+	&--box
+	{
+	  display: flex;
+	  align-items: center;
+	}
+	
+  &--slices
+  {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -11,25 +18,32 @@
     cursor: pointer;
   }
 
-	&--slice{
+	&--slice
+	{
 		width: 24px;
 	  height: 1px;
 	  background-color: #333;
 	}
 
-	&--middle-slice{
+	&--middle-slice
+	{
 		margin: 6px 0;
 	}
 
-	&:hover .burger--slice{
+	&:hover .burger--slice
+	{
 		border-color: #f00;
 	}
 
-	&--text{
+	&--text
+	{
 		margin-left: 10px;
 	}
 
-	@include desktop{
+	@include desktop
+	{
 		display: none;
 	}
 }
+
+
