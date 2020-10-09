@@ -75,16 +75,19 @@ script.
 
 	function plusButtonsExpandCollapse()
 	{
-		let plusButtonContainers = document.querySelectorAll('.header-menu--plus-button-container')
-
-		plusButtonContainers.forEach(function(plusButtonContainer)
+		window.addEventListener('load', function()
 		{
-			plusButtonContainer.addEventListener('click', function()
-			{
-				let headerSubmenu = plusButtonContainer.closest('.header-menu--menu-list-item').querySelector('.header-menu--submenu')
-				expandOrCollapseMenuSection(headerSubmenu, true)
-			})
+			let plusButtonContainers = document.querySelectorAll('.header-menu--dd-icon-container')
 
+			plusButtonContainers.forEach(function(plusButtonContainer)
+			{
+				plusButtonContainer.addEventListener('click', function()
+				{
+					let headerSubmenu = plusButtonContainer.closest('.header-menu--menu-list-item').querySelector('.header-menu--submenu')
+					expandOrCollapseMenuSection(headerSubmenu, true)
+				})
+
+			})
 		})
 	}
 

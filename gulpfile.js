@@ -113,9 +113,8 @@ function _getStyleSrcFiles(property)
 		 */
 
 		extras.push('src/base/styles/modules/header-menu/header-menu.scss')
-		extras.push('src/base/styles/modules/header-menu/plus-button.scss')
+		extras.push('src/base/styles/modules/dd-icon.scss')
 		extras.push('src/base/styles/modules/header-menu/header-menu-close-button.scss')
-		extras.push('src/base/styles/modules/header-menu/arrow-button.scss')
 
 		switch(property.menuConfig.mainStyle)
 		{

@@ -11,11 +11,17 @@ mixin headerMenu( menuConfig, menuData )
 							.header-menu--dd-icon-container
 								a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 									| !{item.title}
+								//- static arrow
+								if menuConfig.ddIconStyle == 1
+									+arrowButton('header-menu--dd-icon')
 								//- animated arrow
-								if menuConfig.ddIconMainStyle == 2
-									+arrowButton('header-menu--arrow-button')
+								else if menuConfig.ddIconStyle == 2
+									+arrowButton('header-menu--dd-icon')
+								//- chevron
+								else if menuConfig.ddIconStyle == 5
+									+chevronButton('header-menu--dd-icon')
 								else
-									+plusButton('header-menu--plus-button')
+									+plusButton('header-menu--dd-icon')
 						else
 							a.header-menu--menu-list-item-anchor(href=`${item.href}`)
 								| !{item.title}

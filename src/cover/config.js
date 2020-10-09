@@ -18,7 +18,8 @@ const Dropdown_Icon_Style =
 	STATIC_ARROW: 1,
 	ANIMATED_ARROW: 2,
 	STATIC_PLUS: 3,
-	ANIMATED_PLUS: 4 
+	ANIMATED_PLUS: 4,
+	CHEVRON: 5
 }
 
 const config = 
@@ -27,23 +28,23 @@ const config =
 	properties : 
 	[
 		{
-			name: 'default-prop',
+			name: 'abram-inn',
 			beType: BE_Type.ADVANCED,
 			files: 
 			{
-				style: 'default-prop/style',
-				header: 'default-prop/header',
-				footer: 'default-prop/footer',
-				index: 'default-prop/index',
-				vars: 'default-prop/vars',
+				style: 'abram-inn/style',
+				header: 'abram-inn/header',
+				footer: 'abram-inn/footer',
+				index: 'abram-inn/index',
+				vars: 'abram-inn/vars',
 			},
 			menuConfig: 
 			{
 				//STATIC || SlIDELEFT || SLIDERIGHT || EXPAND
-				mainStyle: Menu_Style.SLIDERIGHT,
+				mainStyle: Menu_Style.SLIDELEFT,
 				subStyle: Menu_Style.EXPAND,
-				ddIconMainStyle: Dropdown_Icon_Style.ANIMATED_ARROW,
-				ddIconSubStyle: Dropdown_Icon_Style.NONE
+				//NONE || STATIC_ARROW || ANIMATED_ARROW || STATIC_PLUS || ANIMATED_PLUS || CHEVRON
+				ddIconStyle: Dropdown_Icon_Style.CHEVRON,
 			}
 		}
 		//...
